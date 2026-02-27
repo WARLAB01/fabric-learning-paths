@@ -4,7 +4,7 @@ Interactive learning path guide for Data & Analytics teams working with Microsof
 
 ## View the Site
 
-**[Open the Learning Paths Guide](https://warlab.github.io/fabric-learning-paths/)**
+**[Open the Learning Paths Guide](https://warlab01.github.io/fabric-learning-paths/)**
 
 ## What's Included
 
