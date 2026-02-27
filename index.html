@@ -15,6 +15,7 @@
     --blue: #3498db;
     --purple: #9b59b6;
     --teal: #1abc9c;
+    --orange: #e67e22;
     --light: #f5f6fa;
     --card-bg: #ffffff;
     --text: #2c3e50;
@@ -23,349 +24,121 @@
     --shadow: 0 4px 6px rgba(0,0,0,0.07);
     --shadow-hover: 0 8px 25px rgba(0,0,0,0.12);
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--light); color: var(--text); line-height: 1.6; }
 
-  body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: var(--light);
-    color: var(--text);
-    line-height: 1.6;
-  }
-
-  /* Header */
-  .header {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    color: white;
-    padding: 2rem;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  }
+  .header { background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: white; padding: 2rem; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
   .header h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: 0.5px; }
   .header .subtitle { font-size: 0.95rem; opacity: 0.85; margin-top: 0.3rem; }
   .header .brand { font-size: 0.75rem; opacity: 0.5; margin-top: 0.5rem; letter-spacing: 2px; text-transform: uppercase; }
 
-  /* Navigation */
-  .nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    background: white;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 99;
-  }
-  .nav-btn {
-    padding: 0.6rem 1.4rem;
-    border: 2px solid var(--border);
-    background: white;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: all 0.2s;
-    color: var(--text);
-  }
+  .nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; padding: 1rem 2rem; background: white; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 99; }
+  .nav-btn { padding: 0.6rem 1.4rem; border: 2px solid var(--border); background: white; border-radius: 25px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; color: var(--text); }
   .nav-btn:hover { border-color: var(--accent); color: var(--accent); }
   .nav-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
   .nav-btn.active[data-role="architect"] { background: var(--purple); border-color: var(--purple); }
   .nav-btn.active[data-role="engineer"] { background: var(--blue); border-color: var(--blue); }
   .nav-btn.active[data-role="scientist"] { background: var(--teal); border-color: var(--teal); }
   .nav-btn.active[data-role="analyst"] { background: var(--green); border-color: var(--green); }
+  .nav-btn.active[data-role="agentmaker"] { background: var(--orange); border-color: var(--orange); }
   .nav-btn.active[data-role="conferences"] { background: var(--highlight); border-color: var(--highlight); }
 
-  /* Selection bar */
-  .selection-bar {
-    background: var(--secondary);
-    color: white;
-    padding: 0.7rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.85rem;
-    position: sticky;
-    top: 0;
-    z-index: 98;
-  }
+  .selection-bar { background: var(--secondary); color: white; padding: 0.7rem 2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; position: sticky; top: 0; z-index: 98; }
   .selection-bar .count { font-weight: 600; }
   .selection-bar .total-cost { font-weight: 700; color: var(--gold); font-size: 1rem; }
-  .export-btn {
-    background: var(--highlight);
-    color: white;
-    border: none;
-    padding: 0.5rem 1.2rem;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.85rem;
-    transition: all 0.2s;
-  }
+  .export-btn { background: var(--highlight); color: white; border: none; padding: 0.5rem 1.2rem; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: all 0.2s; }
   .export-btn:hover { transform: scale(1.05); background: #d63851; }
   .export-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-  .clear-btn {
-    background: transparent;
-    color: rgba(255,255,255,0.7);
-    border: 1px solid rgba(255,255,255,0.3);
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    margin-left: 0.5rem;
-    transition: all 0.2s;
-  }
+  .clear-btn { background: transparent; color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.3); padding: 0.4rem 1rem; border-radius: 20px; cursor: pointer; font-size: 0.8rem; margin-left: 0.5rem; transition: all 0.2s; }
   .clear-btn:hover { color: white; border-color: white; }
 
-  /* Main content */
   .main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-
-  /* Page sections */
   .page { display: none; }
   .page.active { display: block; }
 
-  /* Role header */
-  .role-header {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: var(--shadow);
-  }
+  .role-header { background: white; border-radius: 12px; padding: 2rem; margin-bottom: 2rem; box-shadow: var(--shadow); }
   .role-header h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-  .role-header .business-case {
-    background: linear-gradient(135deg, #f8f9fa, #e8f4f8);
-    border-left: 4px solid var(--blue);
-    padding: 1rem 1.5rem;
-    border-radius: 0 8px 8px 0;
-    margin-top: 1rem;
-    font-size: 0.92rem;
-    line-height: 1.7;
-  }
+  .role-header .business-case { background: linear-gradient(135deg, #f8f9fa, #e8f4f8); border-left: 4px solid var(--blue); padding: 1rem 1.5rem; border-radius: 0 8px 8px 0; margin-top: 1rem; font-size: 0.92rem; line-height: 1.7; }
   .role-header .business-case strong { color: var(--accent); }
 
-  /* Sequence indicator */
-  .sequence-section {
-    margin-bottom: 2rem;
-  }
-  .sequence-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: white;
-    padding: 0.7rem 1.5rem;
-    border-radius: 25px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    box-shadow: var(--shadow);
-    margin-bottom: 1rem;
-  }
-  .sequence-label .step-num {
-    background: var(--accent);
-    color: white;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-  }
-  .sequence-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
-    color: var(--text-light);
-    font-size: 1.5rem;
-  }
+  .sequence-section { margin-bottom: 2rem; }
+  .sequence-label { display: inline-flex; align-items: center; gap: 0.5rem; background: white; padding: 0.7rem 1.5rem; border-radius: 25px; font-weight: 700; font-size: 0.95rem; box-shadow: var(--shadow); margin-bottom: 1rem; }
+  .sequence-label .step-num { background: var(--accent); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
+  .sequence-arrow { display: flex; align-items: center; justify-content: center; padding: 0.5rem; color: var(--text-light); font-size: 1.5rem; }
 
-  /* Card grid */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-  }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; margin-bottom: 1rem; }
 
-  /* Card */
-  .card {
-    background: var(--card-bg);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: all 0.25s;
-    border: 2px solid transparent;
-    position: relative;
-    cursor: pointer;
-  }
+  .card { background: var(--card-bg); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); transition: all 0.25s; border: 2px solid transparent; position: relative; cursor: pointer; }
   .card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
   .card.selected { border-color: var(--highlight); }
-  .card.selected::after {
-    content: '✓';
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: var(--highlight);
-    color: white;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    font-weight: 700;
-  }
+  .card.selected::after { content: '\2713'; position: absolute; top: 12px; right: 12px; background: var(--highlight); color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; }
 
-  .card-type {
-    padding: 0.3rem 0.8rem;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: white;
-  }
+  .card-type { padding: 0.3rem 0.8rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: white; }
   .card-type.certification { background: var(--accent); }
   .card-type.applied-skill { background: var(--teal); }
   .card-type.fundamental { background: var(--green); }
   .card-type.training { background: var(--purple); }
+  .card-type.external { background: var(--orange); }
   .card-type.conference { background: var(--highlight); }
 
   .card-body { padding: 1.2rem 1.5rem; }
   .card-body h3 { font-size: 1.05rem; margin-bottom: 0.3rem; color: var(--primary); }
   .card-body .exam-code { font-size: 0.8rem; color: var(--text-light); font-weight: 600; margin-bottom: 0.6rem; }
-  .card-body .description { font-size: 0.85rem; color: var(--text); margin-bottom: 1rem; line-height: 1.5; }
+  .card-body .description { font-size: 0.85rem; color: var(--text); margin-bottom: 0.8rem; line-height: 1.5; }
 
-  .card-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 0.8rem;
-  }
-  .badge {
-    font-size: 0.72rem;
-    padding: 0.25rem 0.6rem;
-    border-radius: 12px;
-    font-weight: 600;
-  }
+  .prereqs { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 0.7rem 1rem; margin-bottom: 0.8rem; font-size: 0.8rem; line-height: 1.5; }
+  .prereqs strong { color: #e65100; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .prereqs ul { margin: 0.3rem 0 0 1.2rem; padding: 0; }
+  .prereqs li { margin-bottom: 0.15rem; }
+
+  .card-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem; }
+  .badge { font-size: 0.72rem; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 600; }
   .badge-cost { background: #fef3c7; color: #92400e; }
   .badge-level { background: #dbeafe; color: #1e40af; }
   .badge-duration { background: #f3e8ff; color: #6b21a8; }
   .badge-free { background: #d1fae5; color: #065f46; }
   .badge-sold-out { background: #fee2e2; color: #991b1b; }
 
-  .card-footer {
-    padding: 0.8rem 1.5rem;
-    background: #f8f9fa;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .card-footer a {
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 0.82rem;
-    font-weight: 600;
-  }
+  .card-footer { padding: 0.8rem 1.5rem; background: #f8f9fa; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; }
   .card-footer a:hover { text-decoration: underline; }
 
-  /* Conference cards */
-  .conf-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: all 0.25s;
-    border: 2px solid transparent;
-    cursor: pointer;
-  }
+  .conf-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); transition: all 0.25s; border: 2px solid transparent; cursor: pointer; position: relative; }
   .conf-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
   .conf-card.selected { border-color: var(--highlight); }
-  .conf-card.selected::after {
-    content: '✓';
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: var(--highlight);
-    color: white;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    font-weight: 700;
-  }
-  .conf-card { position: relative; }
-
-  .conf-header {
-    padding: 1.5rem;
-    color: white;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-  }
+  .conf-card.selected::after { content: '\2713'; position: absolute; top: 12px; right: 12px; background: var(--highlight); color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; }
+  .conf-header { padding: 1.5rem; color: white; background: linear-gradient(135deg, var(--primary), var(--accent)); }
   .conf-header h3 { font-size: 1.2rem; margin-bottom: 0.3rem; }
   .conf-header .conf-date { font-size: 0.9rem; opacity: 0.9; }
   .conf-header .conf-location { font-size: 0.85rem; opacity: 0.75; }
-
   .conf-body { padding: 1.5rem; }
   .conf-body .description { font-size: 0.88rem; line-height: 1.6; margin-bottom: 1rem; }
   .conf-body .conf-details { font-size: 0.82rem; color: var(--text-light); }
   .conf-body .conf-details div { margin-bottom: 0.3rem; }
 
-  /* Export modal */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-  }
+  .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
   .modal-overlay.visible { display: flex; }
-  .modal {
-    background: white;
-    border-radius: 16px;
-    width: 90%;
-    max-width: 700px;
-    max-height: 85vh;
-    overflow-y: auto;
-    padding: 2rem;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  }
-  .modal h2 { margin-bottom: 1rem; }
+  .modal { background: white; border-radius: 16px; width: 90%; max-width: 800px; max-height: 85vh; overflow-y: auto; padding: 2rem; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+  .modal h2 { margin-bottom: 0.5rem; }
+  .modal .modal-subtitle { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1.5rem; }
   .modal table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.88rem; }
   .modal th { text-align: left; padding: 0.6rem; border-bottom: 2px solid var(--accent); color: var(--accent); }
   .modal td { padding: 0.6rem; border-bottom: 1px solid var(--border); }
   .modal .total-row { font-weight: 700; background: #f8f9fa; }
   .modal-actions { display: flex; gap: 1rem; justify-content: flex-end; }
-  .modal-actions button {
-    padding: 0.6rem 1.5rem;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    font-size: 0.9rem;
-  }
+  .modal-actions button { padding: 0.6rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; font-size: 0.9rem; }
   .btn-primary { background: var(--accent); color: white; }
   .btn-secondary { background: var(--border); color: var(--text); }
   .btn-primary:hover { background: var(--primary); }
+  .export-section { margin-bottom: 1.5rem; }
+  .export-section h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .export-biz-case { background: #f0f7ff; border-radius: 8px; padding: 1rem; margin: 0.8rem 0; font-size: 0.85rem; line-height: 1.6; }
+  .export-biz-case strong { color: var(--accent); }
 
-  /* Responsive */
   @media (max-width: 768px) {
     .header h1 { font-size: 1.3rem; }
     .nav { gap: 0.3rem; padding: 0.7rem 1rem; }
-    .nav-btn { padding: 0.5rem 1rem; font-size: 0.8rem; }
+    .nav-btn { padding: 0.5rem 0.8rem; font-size: 0.78rem; }
     .main { padding: 1rem; }
     .card-grid { grid-template-columns: 1fr; }
     .selection-bar { flex-wrap: wrap; gap: 0.5rem; }
@@ -373,10 +146,9 @@
 </style>
 </head>
 <body>
-
 <div class="header">
   <h1>Microsoft Fabric Learning Paths</h1>
-  <div class="subtitle">Certifications, Applied Skills & Events for Your Data & Analytics Team</div>
+  <div class="subtitle">Certifications, Applied Skills &amp; Events for Your Data &amp; Analytics Team</div>
   <div class="brand">WARLab</div>
 </div>
 
@@ -386,7 +158,8 @@
   <button class="nav-btn" data-role="engineer" onclick="showPage('engineer')">Engineer</button>
   <button class="nav-btn" data-role="scientist" onclick="showPage('scientist')">Data Scientist</button>
   <button class="nav-btn" data-role="analyst" onclick="showPage('analyst')">Analyst</button>
-  <button class="nav-btn" data-role="conferences" onclick="showPage('conferences')">Conferences & Events</button>
+  <button class="nav-btn" data-role="agentmaker" onclick="showPage('agentmaker')">Agent Maker</button>
+  <button class="nav-btn" data-role="conferences" onclick="showPage('conferences')">Conferences &amp; Events</button>
 </nav>
 
 <div class="selection-bar">
@@ -396,7 +169,7 @@
     <span class="total-cost" id="totalCost">$0</span>
   </div>
   <div>
-    <button class="export-btn" id="exportBtn" disabled onclick="openExportModal()">Export Selected</button>
+    <button class="export-btn" id="exportBtn" disabled onclick="openExportModal()">Export Business Case</button>
     <button class="clear-btn" onclick="clearSelections()">Clear All</button>
   </div>
 </div>
@@ -407,186 +180,123 @@
   <div class="page active" id="page-overview">
     <div class="role-header">
       <h2>Welcome to the Microsoft Fabric Learning Hub</h2>
-      <p style="margin-top:0.8rem;font-size:0.95rem;color:var(--text);">
-        This guide organizes Microsoft certifications, Applied Skills credentials, training resources, and industry events tailored for your Data &amp; Analytics group working with Microsoft Fabric. Select a role above to see a recommended learning sequence with costs, or browse conferences and events for the whole team.
-      </p>
-      <p style="margin-top:1rem;font-size:0.92rem;color:var(--text-light);">
-        Click any card to add it to your selection, then use <strong>Export Selected</strong> to generate a shareable summary with total costs.
-      </p>
+      <p style="margin-top:0.8rem;font-size:0.95rem;">This guide organizes Microsoft certifications, Applied Skills credentials, training resources, and industry events tailored for your Data &amp; Analytics group working with Microsoft Fabric. Select a role above to see a recommended learning sequence with costs, or browse conferences and events for the whole team.</p>
+      <p style="margin-top:1rem;font-size:0.92rem;color:var(--text-light);">Click any card to add it to your selection, then use <strong>Export Business Case</strong> to generate a shareable plan with justifications and total costs.</p>
     </div>
-
-    <h3 style="margin-bottom:1rem;">Certification & Credential Quick Reference</h3>
+    <h3 style="margin-bottom:1rem;">Certification &amp; Credential Quick Reference</h3>
     <div style="overflow-x:auto;">
       <table style="width:100%;border-collapse:collapse;background:white;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);font-size:0.88rem;">
         <thead>
           <tr style="background:var(--accent);color:white;">
             <th style="padding:0.8rem 1rem;text-align:left;">Credential</th>
-            <th style="padding:0.8rem 1rem;text-align:left;">Type</th>
-            <th style="padding:0.8rem 1rem;text-align:left;">Cost</th>
-            <th style="padding:0.8rem 1rem;text-align:center;">Architect</th>
-            <th style="padding:0.8rem 1rem;text-align:center;">Engineer</th>
-            <th style="padding:0.8rem 1rem;text-align:center;">Data Scientist</th>
-            <th style="padding:0.8rem 1rem;text-align:center;">Analyst</th>
+            <th style="padding:0.8rem;text-align:left;">Type</th>
+            <th style="padding:0.8rem;text-align:left;">Cost</th>
+            <th style="padding:0.8rem;text-align:center;">Architect</th>
+            <th style="padding:0.8rem;text-align:center;">Engineer</th>
+            <th style="padding:0.8rem;text-align:center;">Scientist</th>
+            <th style="padding:0.8rem;text-align:center;">Analyst</th>
+            <th style="padding:0.8rem;text-align:center;">Agent Maker</th>
           </tr>
         </thead>
-        <tbody>
-          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid #eee;">DP-900: Azure Data Fundamentals</td><td style="padding:0.6rem;border-bottom:1px solid #eee;">Fundamental</td><td style="padding:0.6rem;border-bottom:1px solid #eee;">$99</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td></tr>
-          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid #eee;">AI-900: Azure AI Fundamentals</td><td style="padding:0.6rem;border-bottom:1px solid #eee;">Fundamental</td><td style="padding:0.6rem;border-bottom:1px solid #eee;">$99</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9675;</td></tr>
-          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid #eee;">DP-600: Fabric Analytics Engineer</td><td style="padding:0.6rem;border-bottom:1px solid #eee;">Associate</td><td style="padding:0.6rem;border-bottom:1px solid #eee;">$165</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9675;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td></tr>
-          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid #eee;">DP-700: Fabric Data Engineer</td><td style="padding:0.6rem;border-bottom:1px solid #eee;">Associate</td><td style="padding:0.6rem;border-bottom:1px solid #eee;">$165</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9675;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9675;</td></tr>
-          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid #eee;">PL-300: Power BI Data Analyst</td><td style="padding:0.6rem;border-bottom:1px solid #eee;">Associate</td><td style="padding:0.6rem;border-bottom:1px solid #eee;">$165</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9675;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9675;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9675;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td></tr>
-          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid #eee;">AI-102: Azure AI Engineer</td><td style="padding:0.6rem;border-bottom:1px solid #eee;">Associate</td><td style="padding:0.6rem;border-bottom:1px solid #eee;">$165</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9675;</td></tr>
-          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid #eee;">DP-100: Azure Data Scientist</td><td style="padding:0.6rem;border-bottom:1px solid #eee;">Associate</td><td style="padding:0.6rem;border-bottom:1px solid #eee;">$165</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9675;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9675;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9675;</td></tr>
-          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid #eee;">AZ-305: Azure Solutions Architect</td><td style="padding:0.6rem;border-bottom:1px solid #eee;">Expert</td><td style="padding:0.6rem;border-bottom:1px solid #eee;">$165</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9679;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9675;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9675;</td><td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">&#9675;</td></tr>
-        </tbody>
+        <tbody id="overviewTable"></tbody>
       </table>
     </div>
-    <p style="font-size:0.78rem;color:var(--text-light);margin-top:0.5rem;">&#9679; = Core/Recommended &nbsp;&nbsp; &#9675; = Optional/Nice-to-have &nbsp;&nbsp; All exam costs are USD. Free self-paced training is available on Microsoft Learn. Instructor-led training typically costs $2,000–$3,000 per course.</p>
+    <p style="font-size:0.78rem;color:var(--text-light);margin-top:0.5rem;">&#9679; = Core/Recommended &nbsp;&nbsp; &#9675; = Optional/Nice-to-have &nbsp;&nbsp; All exam costs USD. Free self-paced training available on Microsoft Learn. Instructor-led training typically $2,000-$3,000/course.</p>
   </div>
 
-  <!-- ARCHITECT PAGE -->
+  <!-- ROLE PAGES (generated dynamically) -->
   <div class="page" id="page-architect">
     <div class="role-header">
       <h2 style="color:var(--purple);">Data &amp; Analytics Architect</h2>
       <p style="margin-top:0.5rem;color:var(--text-light);">Designs the overall data platform strategy, governance frameworks, and technical architecture for Fabric-based solutions.</p>
-      <div class="business-case">
-        <strong>Why invest in Architect certifications?</strong> Architects make foundational decisions that affect every downstream workload. Misconfigured architectures in Microsoft Fabric can lead to runaway compute costs, data governance failures, and security vulnerabilities. Certified architects ensure your Fabric deployment follows best practices for lakehouse design, data mesh patterns, and enterprise-scale governance — saving the organization significant rework and risk. The AZ-305 and Fabric certifications together validate both cloud-level design thinking and Fabric-specific implementation knowledge, ensuring architects can bridge strategic vision with platform capabilities.
-      </div>
+      <div class="business-case"><strong>Why invest in Architect certifications?</strong> Architects make foundational decisions that affect every downstream workload. Misconfigured architectures in Microsoft Fabric can lead to runaway compute costs, data governance failures, and security vulnerabilities. Certified architects ensure your Fabric deployment follows best practices for lakehouse design, data mesh patterns, and enterprise-scale governance &mdash; saving the organization significant rework and risk. The AZ-305 and Fabric certifications together validate both cloud-level design thinking and Fabric-specific implementation knowledge.</div>
     </div>
-
-    <div class="sequence-section">
-      <div class="sequence-label"><span class="step-num">1</span> Foundation</div>
-      <div class="card-grid" id="architect-step1"></div>
-    </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">1</span> Foundation</div><div class="card-grid" id="architect-step1"></div></div>
     <div class="sequence-arrow">&#8595;</div>
-    <div class="sequence-section">
-      <div class="sequence-label"><span class="step-num">2</span> Core Fabric Certifications</div>
-      <div class="card-grid" id="architect-step2"></div>
-    </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">2</span> Core Fabric Certifications</div><div class="card-grid" id="architect-step2"></div></div>
     <div class="sequence-arrow">&#8595;</div>
-    <div class="sequence-section">
-      <div class="sequence-label"><span class="step-num">3</span> Architecture &amp; AI Specialization</div>
-      <div class="card-grid" id="architect-step3"></div>
-    </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">3</span> Architecture &amp; AI Specialization</div><div class="card-grid" id="architect-step3"></div></div>
     <div class="sequence-arrow">&#8595;</div>
-    <div class="sequence-section">
-      <div class="sequence-label"><span class="step-num">4</span> Applied Skills &amp; Hands-On</div>
-      <div class="card-grid" id="architect-step4"></div>
-    </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">4</span> Applied Skills &amp; Hands-On</div><div class="card-grid" id="architect-step4"></div></div>
   </div>
 
-  <!-- ENGINEER PAGE -->
   <div class="page" id="page-engineer">
     <div class="role-header">
       <h2 style="color:var(--blue);">Data Engineer</h2>
       <p style="margin-top:0.5rem;color:var(--text-light);">Builds, optimizes, and maintains data pipelines, lakehouses, warehouses, and orchestration workflows within Fabric.</p>
-      <div class="business-case">
-        <strong>Why invest in Engineer certifications?</strong> Data Engineers are the backbone of any Fabric deployment — they build the pipelines that feed every dashboard, model, and report. The DP-700 certification is specifically designed for Fabric data engineering, validating skills in data ingestion patterns, lakehouse and warehouse architecture, real-time streaming, and orchestration. Combined with AI credentials, certified engineers can build intelligent data pipelines that incorporate GenAI and agent-based automation. Organizations with certified engineers see faster time-to-insight and fewer pipeline failures, directly impacting business outcomes.
-      </div>
+      <div class="business-case"><strong>Why invest in Engineer certifications?</strong> Data Engineers are the backbone of any Fabric deployment &mdash; they build the pipelines that feed every dashboard, model, and report. The DP-700 certification validates skills in data ingestion patterns, lakehouse/warehouse architecture, real-time streaming, and orchestration. Combined with AI credentials, certified engineers can build intelligent data pipelines that incorporate GenAI and agent-based automation. Organizations with certified engineers see faster time-to-insight and fewer pipeline failures.</div>
     </div>
-
-    <div class="sequence-section">
-      <div class="sequence-label"><span class="step-num">1</span> Foundation</div>
-      <div class="card-grid" id="engineer-step1"></div>
-    </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">1</span> Foundation</div><div class="card-grid" id="engineer-step1"></div></div>
     <div class="sequence-arrow">&#8595;</div>
-    <div class="sequence-section">
-      <div class="sequence-label"><span class="step-num">2</span> Core Fabric Certifications</div>
-      <div class="card-grid" id="engineer-step2"></div>
-    </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">2</span> Core Fabric Certifications</div><div class="card-grid" id="engineer-step2"></div></div>
     <div class="sequence-arrow">&#8595;</div>
-    <div class="sequence-section">
-      <div class="sequence-label"><span class="step-num">3</span> AI &amp; Advanced Skills</div>
-      <div class="card-grid" id="engineer-step3"></div>
-    </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">3</span> AI &amp; Advanced Skills</div><div class="card-grid" id="engineer-step3"></div></div>
     <div class="sequence-arrow">&#8595;</div>
-    <div class="sequence-section">
-      <div class="sequence-label"><span class="step-num">4</span> Applied Skills &amp; Hands-On</div>
-      <div class="card-grid" id="engineer-step4"></div>
-    </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">4</span> Applied Skills &amp; Hands-On</div><div class="card-grid" id="engineer-step4"></div></div>
   </div>
 
-  <!-- DATA SCIENTIST PAGE -->
   <div class="page" id="page-scientist">
     <div class="role-header">
       <h2 style="color:var(--teal);">Data Scientist</h2>
       <p style="margin-top:0.5rem;color:var(--text-light);">Develops machine learning models, builds AI agents, works with GenAI solutions, and delivers predictive analytics within the Fabric ecosystem.</p>
-      <div class="business-case">
-        <strong>Why invest in Data Scientist certifications?</strong> With the rapid evolution of AI — from traditional ML to GenAI agents — Data Scientists need validated skills across both Azure AI services and the Fabric data platform. The DP-100 certification proves expertise in designing ML solutions on Azure, while AI-102 validates the ability to build production AI services including cognitive search, language models, and computer vision. Applied Skills credentials in AI agent creation and Fabric ML solutions demonstrate hands-on capability with the specific tooling your team will use daily. Certified data scientists deliver more reliable models, reduce experimentation waste, and ship AI solutions to production faster.
-      </div>
+      <div class="business-case"><strong>Why invest in Data Scientist certifications?</strong> With the rapid evolution of AI &mdash; from traditional ML to GenAI agents &mdash; Data Scientists need validated skills across both Azure AI services and the Fabric data platform. The DP-100 proves expertise in designing ML solutions on Azure, while AI-102 validates the ability to build production AI services. Applied Skills credentials in AI agent creation and Fabric ML solutions demonstrate hands-on capability. Certified data scientists deliver more reliable models, reduce experimentation waste, and ship AI solutions to production faster.</div>
     </div>
-
-    <div class="sequence-section">
-      <div class="sequence-label"><span class="step-num">1</span> Foundation</div>
-      <div class="card-grid" id="scientist-step1"></div>
-    </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">1</span> Foundation</div><div class="card-grid" id="scientist-step1"></div></div>
     <div class="sequence-arrow">&#8595;</div>
-    <div class="sequence-section">
-      <div class="sequence-label"><span class="step-num">2</span> Core AI &amp; ML Certifications</div>
-      <div class="card-grid" id="scientist-step2"></div>
-    </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">2</span> Core AI &amp; ML Certifications</div><div class="card-grid" id="scientist-step2"></div></div>
     <div class="sequence-arrow">&#8595;</div>
-    <div class="sequence-section">
-      <div class="sequence-label"><span class="step-num">3</span> Fabric Platform Knowledge</div>
-      <div class="card-grid" id="scientist-step3"></div>
-    </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">3</span> Fabric Platform Knowledge</div><div class="card-grid" id="scientist-step3"></div></div>
     <div class="sequence-arrow">&#8595;</div>
-    <div class="sequence-section">
-      <div class="sequence-label"><span class="step-num">4</span> Applied Skills &amp; Specialization</div>
-      <div class="card-grid" id="scientist-step4"></div>
-    </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">4</span> Applied Skills &amp; Specialization</div><div class="card-grid" id="scientist-step4"></div></div>
   </div>
 
-  <!-- ANALYST PAGE -->
   <div class="page" id="page-analyst">
     <div class="role-header">
       <h2 style="color:var(--green);">Data Analyst</h2>
       <p style="margin-top:0.5rem;color:var(--text-light);">Transforms data into actionable insights through dashboards, reports, semantic models, and analytical queries within Fabric and Power BI.</p>
-      <div class="business-case">
-        <strong>Why invest in Analyst certifications?</strong> Analysts are the bridge between raw data and business decisions. The PL-300 validates Power BI mastery — the primary visualization and reporting layer in Fabric. The DP-600 extends this into Fabric's analytics engine, covering semantic models, DAX optimization, and cross-workload analytics. Together, these certifications ensure analysts can deliver self-service analytics that are governed, performant, and trusted by the business. Organizations with certified analysts see higher adoption of data-driven decision-making and reduced reliance on ad-hoc, ungoverned reporting.
-      </div>
+      <div class="business-case"><strong>Why invest in Analyst certifications?</strong> Analysts are the bridge between raw data and business decisions. PL-300 validates Power BI mastery &mdash; the primary visualization layer in Fabric. DP-600 extends this into Fabric's analytics engine, covering semantic models, DAX optimization, and cross-workload analytics. Together, these certifications ensure analysts can deliver self-service analytics that are governed, performant, and trusted by the business. Organizations with certified analysts see higher adoption of data-driven decision-making.</div>
     </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">1</span> Foundation</div><div class="card-grid" id="analyst-step1"></div></div>
+    <div class="sequence-arrow">&#8595;</div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">2</span> Core Analytics Certifications</div><div class="card-grid" id="analyst-step2"></div></div>
+    <div class="sequence-arrow">&#8595;</div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">3</span> Optional Expansion</div><div class="card-grid" id="analyst-step3"></div></div>
+    <div class="sequence-arrow">&#8595;</div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">4</span> Applied Skills</div><div class="card-grid" id="analyst-step4"></div></div>
+  </div>
 
-    <div class="sequence-section">
-      <div class="sequence-label"><span class="step-num">1</span> Foundation</div>
-      <div class="card-grid" id="analyst-step1"></div>
+  <!-- AGENT MAKER PAGE -->
+  <div class="page" id="page-agentmaker">
+    <div class="role-header">
+      <h2 style="color:var(--orange);">Agent Maker</h2>
+      <p style="margin-top:0.5rem;color:var(--text-light);">Designs and builds AI agents ranging from low-code Copilot Studio bots to advanced code-first agents using Azure AI Foundry, Semantic Kernel, and Azure OpenAI.</p>
+      <div class="business-case"><strong>Why invest in an Agent Maker path?</strong> AI agents represent the next evolution of enterprise automation &mdash; moving from static dashboards and reports to systems that can reason, act, and adapt. Microsoft's agent ecosystem spans two tiers: <strong>Copilot Studio</strong> for rapid, low-code agent creation accessible to power users and citizen developers, and <strong>Azure AI Foundry</strong> for production-grade, code-first agents that integrate with enterprise data, custom models, and complex orchestration. Investing in Agent Maker skills ensures your team can deliver intelligent automation across both tiers &mdash; from self-service chatbots to sophisticated multi-step agents that query your Fabric data warehouse, trigger workflows, and generate insights autonomously. This is the fastest-growing capability area in the Microsoft ecosystem.</div>
     </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">1</span> Foundation &amp; Platform Awareness</div><div class="card-grid" id="agentmaker-step1"></div></div>
     <div class="sequence-arrow">&#8595;</div>
-    <div class="sequence-section">
-      <div class="sequence-label"><span class="step-num">2</span> Core Analytics Certifications</div>
-      <div class="card-grid" id="analyst-step2"></div>
-    </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">2</span> Low-Code Agent Building (Copilot Studio)</div><div class="card-grid" id="agentmaker-step2"></div></div>
     <div class="sequence-arrow">&#8595;</div>
-    <div class="sequence-section">
-      <div class="sequence-label"><span class="step-num">3</span> Optional Expansion</div>
-      <div class="card-grid" id="analyst-step3"></div>
-    </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">3</span> Code-First AI Engineering (Azure AI Foundry)</div><div class="card-grid" id="agentmaker-step3"></div></div>
     <div class="sequence-arrow">&#8595;</div>
-    <div class="sequence-section">
-      <div class="sequence-label"><span class="step-num">4</span> Applied Skills</div>
-      <div class="card-grid" id="analyst-step4"></div>
-    </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">4</span> Applied Skills &amp; Advanced Agent Patterns</div><div class="card-grid" id="agentmaker-step4"></div></div>
   </div>
 
   <!-- CONFERENCES PAGE -->
   <div class="page" id="page-conferences">
     <div class="role-header">
-      <h2 style="color:var(--highlight);">Conferences &amp; Events — 2026</h2>
-      <p style="margin-top:0.5rem;color:var(--text-light);">Industry conferences valuable across all roles. These events offer hands-on workshops, networking with peers and Microsoft engineering teams, and early access to product roadmaps.</p>
-      <div class="business-case">
-        <strong>Why invest in conferences?</strong> Conferences provide learning that certifications cannot — direct access to product teams, real-world architecture case studies, peer networking, and hands-on labs with pre-release features. Sending team members to one or two strategic conferences per year accelerates adoption, surfaces best practices, and keeps your team ahead of the platform's rapid evolution cycle. The ROI often includes immediate improvements to existing implementations based on sessions attended.
-      </div>
+      <h2 style="color:var(--highlight);">Conferences &amp; Events &mdash; 2026</h2>
+      <p style="margin-top:0.5rem;color:var(--text-light);">Industry conferences valuable across all roles. These events offer hands-on workshops, networking, and early access to product roadmaps.</p>
+      <div class="business-case"><strong>Why invest in conferences?</strong> Conferences provide learning that certifications cannot &mdash; direct access to product teams, real-world architecture case studies, peer networking, and hands-on labs with pre-release features. The ROI often includes immediate improvements to existing implementations based on sessions attended.</div>
     </div>
     <div class="card-grid" id="conferences-grid"></div>
   </div>
-
 </div>
 
 <!-- Export Modal -->
 <div class="modal-overlay" id="exportModal">
   <div class="modal">
-    <h2>Your Selected Learning Plan</h2>
-    <p style="margin-bottom:1rem;color:var(--text-light);font-size:0.9rem;">Review your selections below. Copy or download this plan to share with your manager or L&amp;D team.</p>
+    <h2>Your Learning Investment Plan</h2>
+    <p class="modal-subtitle">A business case for the selected certifications, credentials, and events.</p>
     <div id="exportContent"></div>
     <div class="modal-actions">
       <button class="btn-secondary" onclick="closeExportModal()">Close</button>
@@ -600,399 +310,229 @@
 // === DATA ===
 const certifications = [
   // FUNDAMENTALS
-  {
-    id: 'dp900',
-    name: 'Azure Data Fundamentals',
-    code: 'DP-900',
-    type: 'fundamental',
-    cost: 99,
-    level: 'Fundamental',
-    duration: '45 min exam',
-    description: 'Core data concepts and Azure data services including relational, non-relational, and analytics workloads. The essential starting point for anyone entering the Azure data ecosystem.',
-    link: 'https://learn.microsoft.com/en-us/credentials/certifications/azure-data-fundamentals/',
-    roles: {
-      architect: { step: 1, priority: 'core' },
-      engineer: { step: 1, priority: 'core' },
-      scientist: { step: 1, priority: 'core' },
-      analyst: { step: 1, priority: 'core' }
-    }
+  { id:'dp900', name:'Azure Data Fundamentals', code:'DP-900', type:'fundamental', cost:99, level:'Fundamental', duration:'45 min exam',
+    description:'Core data concepts and Azure data services including relational, non-relational, and analytics workloads. The essential starting point for anyone entering the Azure data ecosystem.',
+    prereqs: ['No formal prerequisites', 'Basic familiarity with data concepts (tables, queries, cloud storage) is helpful'],
+    bizCase: 'Establishes a shared vocabulary across the team for Azure data services. Ensures everyone understands the foundational building blocks (relational vs. non-relational, batch vs. streaming) before specializing. Reduces miscommunication in architecture discussions and accelerates onboarding to Fabric-specific training.',
+    link:'https://learn.microsoft.com/en-us/credentials/certifications/azure-data-fundamentals/',
+    roles:{ architect:{step:1,priority:'core'}, engineer:{step:1,priority:'core'}, scientist:{step:1,priority:'core'}, analyst:{step:1,priority:'core'}, agentmaker:{step:1,priority:'optional'} }
   },
-  {
-    id: 'ai900',
-    name: 'Azure AI Fundamentals',
-    code: 'AI-900',
-    type: 'fundamental',
-    cost: 99,
-    level: 'Fundamental',
-    duration: '45 min exam',
-    description: 'Foundational knowledge of machine learning and AI concepts, plus Azure AI services. Recommended before pursuing any AI-focused certifications.',
-    link: 'https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/',
-    roles: {
-      architect: { step: 1, priority: 'core' },
-      engineer: { step: 1, priority: 'core' },
-      scientist: { step: 1, priority: 'core' },
-      analyst: { step: 3, priority: 'optional' }
-    }
+  { id:'ai900', name:'Azure AI Fundamentals', code:'AI-900', type:'fundamental', cost:99, level:'Fundamental', duration:'45 min exam',
+    description:'Foundational knowledge of machine learning and AI concepts, plus Azure AI services. Recommended before pursuing any AI-focused certifications.',
+    prereqs: ['No formal prerequisites', 'Basic understanding of ML concepts (training, inference, classification) is helpful'],
+    bizCase: 'Provides a shared understanding of AI/ML concepts across the team, enabling more informed conversations about where AI can add value. Creates the foundation for AI-102, DP-100, and agent development paths. Essential for anyone who will evaluate, design, or build AI solutions.',
+    link:'https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/',
+    roles:{ architect:{step:1,priority:'core'}, engineer:{step:1,priority:'core'}, scientist:{step:1,priority:'core'}, analyst:{step:3,priority:'optional'}, agentmaker:{step:1,priority:'core'} }
+  },
+  { id:'pl900', name:'Power Platform Fundamentals', code:'PL-900', type:'fundamental', cost:99, level:'Fundamental', duration:'45 min exam',
+    description:'Covers the business value and capabilities of Microsoft Power Platform including Power BI, Power Apps, Power Automate, and Copilot Studio. The gateway to understanding low-code agent building.',
+    prereqs: ['No formal prerequisites', 'Basic familiarity with business processes and cloud concepts'],
+    bizCase: 'Essential foundation for anyone entering the Copilot Studio / low-code agent path. Demonstrates understanding of the Power Platform ecosystem that underpins Copilot Studio agent development. Also valuable for analysts who want to extend their dashboards with Power Apps or Power Automate flows.',
+    link:'https://learn.microsoft.com/en-us/credentials/certifications/power-platform-fundamentals/',
+    roles:{ agentmaker:{step:1,priority:'core'}, analyst:{step:3,priority:'optional'} }
+  },
+  // EXTERNAL / NON-MS BASELINE
+  { id:'ext-sql', name:'SQL Fundamentals (Non-MS)', code:'External', type:'external', cost:0, level:'Baseline Skill', duration:'20-40 hours',
+    description:'SQL is the universal language for data querying and is a prerequisite skill for DP-600, DP-700, and DP-100. If you are not already proficient in SELECT, JOIN, GROUP BY, window functions, and CTEs, complete a SQL course before attempting Fabric certifications.',
+    prereqs: ['No prerequisites — this IS the prerequisite'],
+    bizCase: 'SQL proficiency is non-negotiable for every data role. Without it, team members will struggle with DP-600 and DP-700 exam content and — more importantly — with real-world Fabric tasks. Investing in baseline SQL training prevents costly certification failures and accelerates hands-on productivity.',
+    link:'https://www.w3schools.com/sql/',
+    roles:{ engineer:{step:1,priority:'core'}, architect:{step:1,priority:'core'}, scientist:{step:1,priority:'optional'}, analyst:{step:1,priority:'core'} }
+  },
+  { id:'ext-python', name:'Python for Data (Non-MS)', code:'External', type:'external', cost:0, level:'Baseline Skill', duration:'30-50 hours',
+    description:'Python is required for DP-100, AI-102, DP-700 (PySpark), and Fabric notebooks. Key areas: Pandas, NumPy, basic scripting, and familiarity with Jupyter/notebook environments. Free resources include Kaggle Learn, freeCodeCamp, and Microsoft Learn Python paths.',
+    prereqs: ['No prerequisites — this IS the prerequisite'],
+    bizCase: 'Python is the scripting backbone for data engineering (PySpark in Fabric), data science (model training), and AI development (Azure OpenAI SDK, Semantic Kernel). Team members without Python fluency will be locked out of advanced Fabric capabilities. This is a zero-cost investment with outsized returns.',
+    link:'https://www.kaggle.com/learn/python',
+    roles:{ engineer:{step:1,priority:'core'}, scientist:{step:1,priority:'core'}, architect:{step:1,priority:'optional'}, agentmaker:{step:1,priority:'optional'} }
+  },
+  { id:'ext-pyspark', name:'PySpark Essentials (Non-MS)', code:'External', type:'external', cost:0, level:'Baseline Skill', duration:'15-25 hours',
+    description:'PySpark is the primary big data processing language in Fabric lakehouses and notebooks. If you know Python but not PySpark, focus on DataFrames, transformations, and Spark SQL. Free courses available on Databricks Academy and Microsoft Learn.',
+    prereqs: ['Python proficiency required first'],
+    bizCase: 'Fabric uses Apache Spark under the hood for lakehouse processing. Engineers and scientists who cannot write PySpark will be unable to build or optimize the data transformation layer. This targeted upskill bridges the gap between general Python knowledge and Fabric-specific productivity.',
+    link:'https://learn.microsoft.com/en-us/training/paths/get-started-pyspark/',
+    roles:{ engineer:{step:1,priority:'core'}, scientist:{step:1,priority:'optional'} }
+  },
+  { id:'ext-dax', name:'DAX Fundamentals (Non-MS)', code:'External', type:'external', cost:0, level:'Baseline Skill', duration:'20-30 hours',
+    description:'DAX (Data Analysis Expressions) is the formula language for Power BI and Fabric semantic models. Required for DP-600 and PL-300. Learn CALCULATE, filter context, iterators, and time intelligence. SQLBI.com offers the definitive free guide.',
+    prereqs: ['Basic spreadsheet/formula experience helpful'],
+    bizCase: 'DAX is the single most important language for anyone building or maintaining Power BI reports and Fabric semantic models. Poor DAX leads to slow reports and inaccurate metrics. Investing in DAX training directly improves report performance and data accuracy across the organization.',
+    link:'https://www.sqlbi.com/guides/dax/',
+    roles:{ analyst:{step:1,priority:'core'}, architect:{step:1,priority:'optional'} }
   },
   // ASSOCIATE - FABRIC
-  {
-    id: 'dp600',
-    name: 'Fabric Analytics Engineer Associate',
-    code: 'DP-600',
-    type: 'certification',
-    cost: 165,
-    level: 'Associate',
-    duration: '100 min exam',
-    description: 'Validates expertise in planning, implementing, and managing analytics solutions in Microsoft Fabric. Covers data modeling, semantic layers, DAX, SQL, KQL, and cross-workload analytics. The broadest Fabric certification.',
-    link: 'https://learn.microsoft.com/en-us/credentials/certifications/fabric-analytics-engineer-associate/',
-    roles: {
-      architect: { step: 2, priority: 'core' },
-      engineer: { step: 2, priority: 'core' },
-      scientist: { step: 3, priority: 'optional' },
-      analyst: { step: 2, priority: 'core' }
-    }
+  { id:'dp600', name:'Fabric Analytics Engineer Associate', code:'DP-600', type:'certification', cost:165, level:'Associate', duration:'100 min exam',
+    description:'Validates expertise in planning, implementing, and managing analytics solutions in Microsoft Fabric. Covers data modeling, semantic layers, DAX, SQL, KQL, and cross-workload analytics.',
+    prereqs: ['SQL proficiency (SELECT, JOINs, aggregations)', 'DAX experience (CALCULATE, filter context, time intelligence)', 'Power BI experience equivalent to PL-300 level', 'Familiarity with data modeling (star schema, relationships)', '2+ years working with analytics solutions recommended'],
+    bizCase: 'The broadest Fabric certification — validates end-to-end analytics capability from data ingestion through semantic modeling to report delivery. Certified team members can design governed, high-performance analytics solutions that scale across the organization. Directly translates to faster dashboard delivery, better data quality, and reduced reliance on IT for analytics changes.',
+    link:'https://learn.microsoft.com/en-us/credentials/certifications/fabric-analytics-engineer-associate/',
+    roles:{ architect:{step:2,priority:'core'}, engineer:{step:2,priority:'core'}, scientist:{step:3,priority:'optional'}, analyst:{step:2,priority:'core'} }
   },
-  {
-    id: 'dp700',
-    name: 'Fabric Data Engineer Associate',
-    code: 'DP-700',
-    type: 'certification',
-    cost: 165,
-    level: 'Associate',
-    duration: '100 min exam',
-    description: 'Specialized data engineering within Fabric — data ingestion, transformation, lakehouse/warehouse architecture, pipelines, and orchestration. Best suited for those building the data infrastructure layer.',
-    link: 'https://learn.microsoft.com/en-us/credentials/certifications/fabric-data-engineer-associate/',
-    roles: {
-      architect: { step: 2, priority: 'core' },
-      engineer: { step: 2, priority: 'core' },
-      scientist: { step: 3, priority: 'optional' },
-      analyst: { step: 3, priority: 'optional' }
-    }
+  { id:'dp700', name:'Fabric Data Engineer Associate', code:'DP-700', type:'certification', cost:165, level:'Associate', duration:'100 min exam',
+    description:'Specialized data engineering within Fabric — data ingestion, transformation, lakehouse/warehouse architecture, pipelines, and orchestration.',
+    prereqs: ['SQL proficiency (DDL, DML, performance tuning)', 'PySpark experience (DataFrames, transformations, Spark SQL)', 'KQL basics (Kusto Query Language for real-time analytics)', 'Understanding of data loading patterns (batch, incremental, streaming)', '3-5 years data engineering experience recommended'],
+    bizCase: 'Validates the ability to build and manage the entire data infrastructure layer in Fabric. Certified engineers can design efficient ingestion pipelines, optimize lakehouse storage (Delta tables, partitioning), and implement real-time streaming — directly reducing data latency and compute costs. This is the most technical Fabric certification and the most impactful for pipeline reliability.',
+    link:'https://learn.microsoft.com/en-us/credentials/certifications/fabric-data-engineer-associate/',
+    roles:{ architect:{step:2,priority:'core'}, engineer:{step:2,priority:'core'}, scientist:{step:3,priority:'optional'}, analyst:{step:3,priority:'optional'} }
   },
-  // ASSOCIATE - ANALYTICS
-  {
-    id: 'pl300',
-    name: 'Power BI Data Analyst Associate',
-    code: 'PL-300',
-    type: 'certification',
-    cost: 165,
-    level: 'Associate',
-    duration: '100 min exam',
-    description: 'Validates the ability to design and build scalable data models, clean and transform data, and create advanced visualizations in Power BI. The go-to certification for anyone focused on reporting and dashboards.',
-    link: 'https://learn.microsoft.com/en-us/credentials/certifications/power-bi-data-analyst/',
-    roles: {
-      analyst: { step: 2, priority: 'core' },
-      architect: { step: 3, priority: 'optional' },
-      engineer: { step: 3, priority: 'optional' },
-      scientist: { step: 3, priority: 'optional' }
-    }
+  { id:'pl300', name:'Power BI Data Analyst Associate', code:'PL-300', type:'certification', cost:165, level:'Associate', duration:'100 min exam',
+    description:'Design and build scalable data models, clean and transform data, and create advanced visualizations in Power BI.',
+    prereqs: ['DAX proficiency (measures, calculated columns, time intelligence)', 'Power Query / M language basics (data transformation)', 'Data modeling concepts (star schema, relationships, cardinality)', 'Familiarity with Power BI Desktop and Service'],
+    bizCase: 'The gold-standard certification for report and dashboard creators. Ensures analysts can build governed, performant reports that business users trust. Directly reduces the volume of ad-hoc data requests and empowers self-service analytics across the organization.',
+    link:'https://learn.microsoft.com/en-us/credentials/certifications/power-bi-data-analyst/',
+    roles:{ analyst:{step:2,priority:'core'}, architect:{step:3,priority:'optional'}, engineer:{step:3,priority:'optional'}, scientist:{step:3,priority:'optional'} }
   },
   // ASSOCIATE - AI
-  {
-    id: 'ai102',
-    name: 'Azure AI Engineer Associate',
-    code: 'AI-102',
-    type: 'certification',
-    cost: 165,
-    level: 'Associate',
-    duration: '100 min exam',
-    description: 'Designing and implementing Azure AI solutions using Azure AI services, Azure AI Search, and Azure OpenAI. Covers building AI agents, generative AI apps, cognitive search, and computer vision. Refreshed in 2025 for GenAI emphasis.',
-    link: 'https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/',
-    roles: {
-      architect: { step: 3, priority: 'core' },
-      engineer: { step: 3, priority: 'core' },
-      scientist: { step: 2, priority: 'core' },
-      analyst: { step: 3, priority: 'optional' }
-    }
+  { id:'ai102', name:'Azure AI Engineer Associate', code:'AI-102', type:'certification', cost:165, level:'Associate', duration:'100 min exam',
+    description:'Design and implement Azure AI solutions using Azure AI services, Azure AI Search, and Azure OpenAI. Covers building AI agents, generative AI apps, cognitive search, and computer vision. Refreshed in 2025 for GenAI and agentic emphasis.',
+    prereqs: ['Python or C# proficiency (REST APIs, SDKs)', 'AI-900 or equivalent AI/ML foundational knowledge', 'Familiarity with REST-based API patterns', 'Understanding of responsible AI principles', 'Azure portal navigation experience helpful'],
+    bizCase: 'The key certification for anyone building AI-powered applications on Azure. Validates the ability to integrate Azure OpenAI, build RAG (Retrieval-Augmented Generation) patterns, implement cognitive search, and deploy AI agents. As your team moves into GenAI and agent development, this certification ensures they can build production-grade, secure, and responsible AI solutions.',
+    link:'https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/',
+    roles:{ architect:{step:3,priority:'core'}, engineer:{step:3,priority:'core'}, scientist:{step:2,priority:'core'}, agentmaker:{step:3,priority:'core'} }
   },
-  // ASSOCIATE - DATA SCIENCE
-  {
-    id: 'dp100',
-    name: 'Azure Data Scientist Associate',
-    code: 'DP-100',
-    type: 'certification',
-    cost: 165,
-    level: 'Associate',
-    duration: '120 min exam',
-    description: 'Design and implement data science and ML solutions on Azure. Covers model training, evaluation, deployment, and MLOps using Azure Machine Learning, Scikit-Learn, PyTorch, and TensorFlow.',
-    link: 'https://learn.microsoft.com/en-us/credentials/certifications/azure-data-scientist/',
-    roles: {
-      scientist: { step: 2, priority: 'core' },
-      architect: { step: 3, priority: 'optional' },
-      engineer: { step: 3, priority: 'optional' },
-      analyst: { step: 3, priority: 'optional' }
-    }
+  { id:'dp100', name:'Azure Data Scientist Associate', code:'DP-100', type:'certification', cost:165, level:'Associate', duration:'120 min exam',
+    description:'Design and implement data science and ML solutions on Azure. Covers model training, evaluation, deployment, and MLOps using Azure Machine Learning, Scikit-Learn, PyTorch, and TensorFlow.',
+    prereqs: ['Python proficiency (Pandas, NumPy, Matplotlib)', 'ML fundamentals (supervised/unsupervised learning, evaluation metrics, train/test split)', 'Experience with at least one ML framework (Scikit-Learn, PyTorch, or TensorFlow)', 'Basic statistics (regression, classification, clustering concepts)', 'Azure portal familiarity recommended; AZ-900 helpful'],
+    bizCase: 'Validates the complete ML lifecycle — from data preparation through model deployment and monitoring. Certified data scientists can design reproducible experiments, implement MLOps practices, and deploy models as scalable endpoints. This translates to faster model iteration, reduced technical debt in ML pipelines, and more reliable predictions powering business decisions.',
+    link:'https://learn.microsoft.com/en-us/credentials/certifications/azure-data-scientist/',
+    roles:{ scientist:{step:2,priority:'core'}, architect:{step:3,priority:'optional'}, engineer:{step:3,priority:'optional'} }
   },
   // EXPERT
-  {
-    id: 'az305',
-    name: 'Azure Solutions Architect Expert',
-    code: 'AZ-305',
-    type: 'certification',
-    cost: 165,
-    level: 'Expert',
-    duration: '100 min exam',
-    description: 'Designs cloud-native and hybrid solutions on Azure, including identity, governance, networking, and data platform architecture. The capstone for architects wanting to validate end-to-end Azure design skills.',
-    link: 'https://learn.microsoft.com/en-us/credentials/certifications/azure-solutions-architect/',
-    roles: {
-      architect: { step: 3, priority: 'core' }
-    }
+  { id:'az305', name:'Azure Solutions Architect Expert', code:'AZ-305', type:'certification', cost:165, level:'Expert', duration:'100 min exam',
+    description:'Design cloud-native and hybrid solutions on Azure including identity, governance, networking, and data platform architecture. The capstone for architects.',
+    prereqs: ['AZ-104 (Azure Administrator) or equivalent hands-on Azure experience', 'Deep understanding of Azure networking, identity (Entra ID), and security', 'Experience designing multi-tier architectures', 'Familiarity with cost optimization and governance patterns', '3-5+ years Azure architecture experience recommended'],
+    bizCase: 'The highest-level Azure architecture validation. Ensures architects can design solutions that are secure, cost-effective, and well-governed across the entire Azure ecosystem — not just Fabric. Critical for making platform-level decisions around networking, identity, disaster recovery, and multi-workload integration.',
+    link:'https://learn.microsoft.com/en-us/credentials/certifications/azure-solutions-architect/',
+    roles:{ architect:{step:3,priority:'core'} }
+  },
+  // AGENT MAKER - COPILOT STUDIO
+  { id:'cs-learn', name:'Microsoft Learn: Create Agents in Copilot Studio (Free)', code:'Self-Paced', type:'training', cost:0, level:'Beginner', duration:'~6 hours',
+    description:'Free learning path covering Copilot Studio agent creation — topics, entities, variables, generative AI answers, and publishing agents to Teams and web. The official starting point for low-code agent development.',
+    prereqs: ['No coding required', 'Basic familiarity with Microsoft 365 and Teams', 'PL-900 helpful but not required'],
+    bizCase: 'Zero-cost entry point into the fastest-growing Microsoft capability. Enables power users and citizen developers to build functional AI agents without writing code, reducing the backlog on engineering teams for common automation requests.',
+    link:'https://learn.microsoft.com/en-us/training/paths/create-extend-custom-copilots-microsoft-copilot-studio/',
+    roles:{ agentmaker:{step:2,priority:'core'} }
+  },
+  { id:'as-cs-agents', name:'Create Agents in Microsoft Copilot Studio', code:'Applied Skill', type:'applied-skill', cost:0, level:'Applied Skill', duration:'Lab-based assessment',
+    description:'Hands-on validation of your ability to build custom agents with Copilot Studio — create topics, configure generative AI, integrate knowledge sources, and publish agents across channels.',
+    prereqs: ['Experience with Copilot Studio (complete the learning path first)', 'Familiarity with Microsoft Teams and Power Platform'],
+    bizCase: 'Proves hands-on competency in building production-ready Copilot Studio agents. Unlike an exam, this is a practical assessment — meaning the credential directly maps to real-world capability. Agents built with these skills can handle employee FAQs, IT helpdesk triage, HR onboarding, and customer support automation.',
+    link:'https://learn.microsoft.com/en-us/credentials/applied-skills/create-agents-in-microsoft-copilot-studio/',
+    roles:{ agentmaker:{step:2,priority:'core'} }
+  },
+  { id:'agent-academy', name:'Copilot Studio Agent Academy (Free)', code:'Self-Paced', type:'training', cost:0, level:'Intermediate', duration:'~10 hours',
+    description:'Microsoft\'s hands-on training program covering grounded prompts, Adaptive Cards, agent flows, connectors, and deploying intelligent agents. Goes deeper than the basic learning path into real-world agent patterns.',
+    prereqs: ['Basic Copilot Studio experience', 'Completed the introductory learning path'],
+    bizCase: 'Bridges the gap between basic agent creation and production-grade deployment patterns. Covers advanced topics like Adaptive Cards for rich user interactions and connector integration for pulling live data into agent responses.',
+    link:'https://microsoft.github.io/agent-academy/',
+    roles:{ agentmaker:{step:2,priority:'core'} }
+  },
+  // AGENT MAKER - FOUNDRY / CODE-FIRST
+  { id:'foundry-learn', name:'Microsoft Learn: Develop AI Agents on Azure (Free)', code:'Self-Paced', type:'training', cost:0, level:'Intermediate', duration:'~8 hours',
+    description:'Free learning path covering code-first agent development using Azure AI Foundry Agent Service and Semantic Kernel. Learn when to use agents, how to build them with tools and plugins, and how to deploy to production.',
+    prereqs: ['Python or C# proficiency', 'Basic understanding of LLMs and prompt engineering', 'Azure subscription and portal familiarity'],
+    bizCase: 'The official Microsoft pathway for code-first agent development. Enables engineers to build agents that go far beyond what Copilot Studio offers — multi-step reasoning, custom tool integration, database queries, and complex business logic orchestration.',
+    link:'https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-on-azure/',
+    roles:{ agentmaker:{step:3,priority:'core'}, engineer:{step:3,priority:'optional'} }
+  },
+  { id:'coursera-agents', name:'Microsoft AI Agents Professional Certificate (Coursera)', code:'Professional Cert', type:'training', cost:49, level:'Intermediate', duration:'~40 hours',
+    description:'Multi-course professional certificate covering AI agent fundamentals through advanced code-based development using Azure AI Foundry. Progresses from concepts to hands-on building with Semantic Kernel and Azure OpenAI.',
+    prereqs: ['Solid programming basics (Python preferred)', 'Basic understanding of APIs and cloud services'],
+    bizCase: 'A structured, hands-on program that takes developers from agent concepts through production implementation. The Coursera format allows self-paced learning with practical projects that build on each other. Ideal for team members transitioning from traditional development into AI agent engineering.',
+    link:'https://www.coursera.org/professional-certificates/microsoft-ai-agents',
+    roles:{ agentmaker:{step:3,priority:'core'} }
   },
   // APPLIED SKILLS
-  {
-    id: 'as-warehouse',
-    name: 'Implement a Data Warehouse in Microsoft Fabric',
-    code: 'Applied Skill',
-    type: 'applied-skill',
-    cost: 0,
-    level: 'Applied Skill',
-    duration: 'Lab-based assessment',
-    description: 'Hands-on validation of your ability to design, build, and manage data warehouses within Microsoft Fabric. Covers schema design, data loading, transformations, and query optimization.',
-    link: 'https://learn.microsoft.com/en-us/credentials/applied-skills/work-with-data-warehouses-using-microsoft-fabric/',
-    roles: {
-      architect: { step: 4, priority: 'core' },
-      engineer: { step: 4, priority: 'core' },
-      analyst: { step: 4, priority: 'optional' }
-    }
+  { id:'as-warehouse', name:'Implement a Data Warehouse in Microsoft Fabric', code:'Applied Skill', type:'applied-skill', cost:0, level:'Applied Skill', duration:'Lab-based assessment',
+    description:'Hands-on validation of your ability to design, build, and manage data warehouses within Microsoft Fabric.',
+    prereqs: ['SQL proficiency (DDL, DML, stored procedures)', 'Understanding of dimensional modeling (star schema, fact/dimension tables)', 'Basic Fabric navigation experience'],
+    bizCase: 'Proves practical ability to implement the data warehouse layer in Fabric — the foundation for enterprise reporting and analytics. Team members with this credential can independently design schemas, load data, and optimize queries, reducing dependency on external consultants.',
+    link:'https://learn.microsoft.com/en-us/credentials/applied-skills/work-with-data-warehouses-using-microsoft-fabric/',
+    roles:{ architect:{step:4,priority:'core'}, engineer:{step:4,priority:'core'}, analyst:{step:4,priority:'optional'} }
   },
-  {
-    id: 'as-realtime',
-    name: 'Implement a Real-Time Intelligence Solution with Fabric',
-    code: 'Applied Skill',
-    type: 'applied-skill',
-    cost: 0,
-    level: 'Applied Skill',
-    duration: 'Lab-based assessment',
-    description: 'Proves competency in building real-time analytics solutions including event streams, KQL queries, real-time dashboards, and data activator triggers within Fabric.',
-    link: 'https://learn.microsoft.com/en-us/credentials/applied-skills/implement-a-real-time-intelligence-solution-with-microsoft-fabric/',
-    roles: {
-      engineer: { step: 4, priority: 'core' },
-      architect: { step: 4, priority: 'core' },
-      analyst: { step: 4, priority: 'optional' }
-    }
+  { id:'as-realtime', name:'Implement a Real-Time Intelligence Solution with Fabric', code:'Applied Skill', type:'applied-skill', cost:0, level:'Applied Skill', duration:'Lab-based assessment',
+    description:'Proves competency in building real-time analytics solutions including event streams, KQL queries, real-time dashboards, and data activator triggers.',
+    prereqs: ['KQL (Kusto Query Language) basics', 'Understanding of event-driven architecture and streaming concepts', 'Basic Fabric experience'],
+    bizCase: 'Validates the ability to build real-time intelligence solutions — increasingly critical for operational analytics, IoT monitoring, and fraud detection. Team members can implement event-driven architectures that surface insights in seconds rather than hours.',
+    link:'https://learn.microsoft.com/en-us/credentials/applied-skills/implement-a-real-time-intelligence-solution-with-microsoft-fabric/',
+    roles:{ engineer:{step:4,priority:'core'}, architect:{step:4,priority:'core'}, analyst:{step:4,priority:'optional'} }
   },
-  {
-    id: 'as-ml',
-    name: 'Implement a Data Science & ML Solution with Fabric',
-    code: 'Applied Skill',
-    type: 'applied-skill',
-    cost: 0,
-    level: 'Applied Skill',
-    duration: 'Lab-based assessment',
-    description: 'Validates hands-on capability to build machine learning solutions within Fabric, including data preparation, model training, experiment tracking, and deployment using Fabric notebooks.',
-    link: 'https://learn.microsoft.com/en-us/credentials/applied-skills/implement-a-data-science-and-machine-learning-solution-with-microsoft-fabric/',
-    roles: {
-      scientist: { step: 4, priority: 'core' },
-      engineer: { step: 4, priority: 'optional' }
-    }
+  { id:'as-ml', name:'Implement a Data Science & ML Solution with Fabric', code:'Applied Skill', type:'applied-skill', cost:0, level:'Applied Skill', duration:'Lab-based assessment',
+    description:'Validates hands-on capability to build ML solutions within Fabric — data preparation, model training, experiment tracking, and deployment using Fabric notebooks.',
+    prereqs: ['Python proficiency (Pandas, Scikit-Learn)', 'ML fundamentals (train/test split, evaluation metrics)', 'Fabric notebook experience'],
+    bizCase: 'Proves the ability to run the full ML lifecycle inside Fabric, from data prep through model deployment. Eliminates the need to export data to external ML platforms, keeping everything within Fabric governance and reducing data movement costs.',
+    link:'https://learn.microsoft.com/en-us/credentials/applied-skills/implement-a-data-science-and-machine-learning-solution-with-microsoft-fabric/',
+    roles:{ scientist:{step:4,priority:'core'}, engineer:{step:4,priority:'optional'} }
   },
-  {
-    id: 'as-agent',
-    name: 'Create an AI Agent',
-    code: 'Applied Skill',
-    type: 'applied-skill',
-    cost: 0,
-    level: 'Applied Skill',
-    duration: 'Lab-based assessment',
-    description: 'Validates your skill in building and configuring AI agents using Copilot Studio and Azure AI, orchestrating agents to automate tasks and drive business impact.',
-    link: 'https://learn.microsoft.com/en-us/credentials/applied-skills/create-an-ai-agent/',
-    roles: {
-      architect: { step: 4, priority: 'core' },
-      engineer: { step: 4, priority: 'core' },
-      scientist: { step: 4, priority: 'core' }
-    }
+  { id:'as-agent', name:'Create an AI Agent', code:'Applied Skill', type:'applied-skill', cost:0, level:'Applied Skill', duration:'Lab-based assessment',
+    description:'Validates your skill in building and configuring AI agents using Copilot Studio and Azure AI — orchestrating agents to automate tasks and drive business impact.',
+    prereqs: ['Basic Copilot Studio or Azure AI experience', 'Understanding of conversational AI patterns'],
+    bizCase: 'The most directly applicable credential for the AI agent initiative. Proves hands-on ability to design, build, and configure AI agents that can automate real business processes — from customer service to internal operations.',
+    link:'https://learn.microsoft.com/en-us/credentials/applied-skills/create-an-ai-agent/',
+    roles:{ architect:{step:4,priority:'core'}, engineer:{step:4,priority:'core'}, scientist:{step:4,priority:'core'}, agentmaker:{step:4,priority:'core'} }
   },
-  {
-    id: 'as-autonomous',
-    name: 'Enhance Agents with Autonomous Capabilities',
-    code: 'Applied Skill',
-    type: 'applied-skill',
-    cost: 0,
-    level: 'Applied Skill',
-    duration: 'Lab-based assessment',
-    description: 'Design and deploy self-governing AI agents using Microsoft Copilot Studio that can perform complex action sequences with minimal human intervention.',
-    link: 'https://learn.microsoft.com/en-us/credentials/applied-skills/enhance-agents-with-autonomous-capabilities/',
-    roles: {
-      architect: { step: 4, priority: 'core' },
-      engineer: { step: 4, priority: 'core' },
-      scientist: { step: 4, priority: 'core' }
-    }
+  { id:'as-autonomous', name:'Enhance Agents with Autonomous Capabilities', code:'Applied Skill', type:'applied-skill', cost:0, level:'Applied Skill', duration:'Lab-based assessment',
+    description:'Design and deploy self-governing AI agents using Microsoft Copilot Studio that can perform complex action sequences with minimal human intervention.',
+    prereqs: ['Completed "Create an AI Agent" or equivalent experience', 'Understanding of agent orchestration and tool use patterns'],
+    bizCase: 'Takes agent capabilities to the next level — autonomous agents that can chain multiple actions, make decisions, and complete complex workflows without human intervention. This is where AI agents move from "helpful chatbot" to "autonomous business process executor."',
+    link:'https://learn.microsoft.com/en-us/credentials/applied-skills/enhance-agents-with-autonomous-capabilities/',
+    roles:{ architect:{step:4,priority:'core'}, engineer:{step:4,priority:'core'}, scientist:{step:4,priority:'core'}, agentmaker:{step:4,priority:'core'} }
   },
-  {
-    id: 'as-genai',
-    name: 'Develop GenAI Apps with Azure OpenAI & Semantic Kernel',
-    code: 'Applied Skill',
-    type: 'applied-skill',
-    cost: 0,
-    level: 'Applied Skill',
-    duration: 'Lab-based assessment',
-    description: 'Build generative AI applications using Azure OpenAI Service and the Semantic Kernel SDK. Covers prompt engineering, RAG patterns, and AI orchestration.',
-    link: 'https://learn.microsoft.com/en-us/credentials/applied-skills/develop-ai-agents-using-microsoft-azure-openai-and-semantic-kernel/',
-    roles: {
-      engineer: { step: 4, priority: 'core' },
-      scientist: { step: 4, priority: 'core' },
-      architect: { step: 4, priority: 'optional' }
-    }
+  { id:'as-genai', name:'Develop GenAI Apps with Azure OpenAI & Semantic Kernel', code:'Applied Skill', type:'applied-skill', cost:0, level:'Applied Skill', duration:'Lab-based assessment',
+    description:'Build generative AI applications using Azure OpenAI Service and the Semantic Kernel SDK. Covers prompt engineering, RAG patterns, and AI orchestration.',
+    prereqs: ['Python or C# proficiency', 'Understanding of LLMs and prompt engineering basics', 'Azure OpenAI Service access'],
+    bizCase: 'Validates the ability to build production GenAI applications — the core skill for connecting AI models to enterprise data and business processes. RAG patterns learned here are essential for building agents that can answer questions grounded in your organization\'s actual data.',
+    link:'https://learn.microsoft.com/en-us/credentials/applied-skills/develop-ai-agents-using-microsoft-azure-openai-and-semantic-kernel/',
+    roles:{ engineer:{step:4,priority:'core'}, scientist:{step:4,priority:'core'}, architect:{step:4,priority:'optional'}, agentmaker:{step:4,priority:'core'} }
   },
-  {
-    id: 'as-secure-ai',
-    name: 'Secure AI Solutions in the Cloud',
-    code: 'Applied Skill',
-    type: 'applied-skill',
-    cost: 0,
-    level: 'Applied Skill',
-    duration: 'Lab-based assessment',
-    description: 'Implement security and compliance for AI workloads in Azure. Covers responsible AI practices, data protection, and governance for AI solutions.',
-    link: 'https://learn.microsoft.com/en-us/credentials/applied-skills/secure-ai-solutions-in-the-cloud/',
-    roles: {
-      architect: { step: 4, priority: 'core' },
-      engineer: { step: 4, priority: 'optional' }
-    }
+  { id:'as-secure-ai', name:'Secure AI Solutions in the Cloud', code:'Applied Skill', type:'applied-skill', cost:0, level:'Applied Skill', duration:'Lab-based assessment',
+    description:'Implement security and compliance for AI workloads in Azure. Covers responsible AI practices, data protection, and governance for AI solutions.',
+    prereqs: ['Azure security fundamentals', 'Understanding of AI/ML deployment patterns', 'Familiarity with Azure RBAC and networking'],
+    bizCase: 'As AI agents gain access to sensitive enterprise data and take autonomous actions, security becomes paramount. This credential ensures team members can implement proper guardrails, data protection, and compliance controls around AI workloads.',
+    link:'https://learn.microsoft.com/en-us/credentials/applied-skills/secure-ai-solutions-in-the-cloud/',
+    roles:{ architect:{step:4,priority:'core'}, engineer:{step:4,priority:'optional'}, agentmaker:{step:4,priority:'optional'} }
   },
   // TRAINING
-  {
-    id: 'ms-learn-fabric',
-    name: 'Microsoft Learn: Get Started with Fabric (Free)',
-    code: 'Self-Paced',
-    type: 'training',
-    cost: 0,
-    level: 'Beginner',
-    duration: '~8 hours',
-    description: 'Free self-paced learning path on Microsoft Learn covering Fabric fundamentals — lakehouses, warehouses, pipelines, notebooks, Power BI integration, and real-time analytics.',
-    link: 'https://learn.microsoft.com/en-us/training/paths/get-started-fabric/',
-    roles: {
-      architect: { step: 1, priority: 'core' },
-      engineer: { step: 1, priority: 'core' },
-      scientist: { step: 1, priority: 'core' },
-      analyst: { step: 1, priority: 'core' }
-    }
+  { id:'ms-learn-fabric', name:'Microsoft Learn: Get Started with Fabric (Free)', code:'Self-Paced', type:'training', cost:0, level:'Beginner', duration:'~8 hours',
+    description:'Free self-paced learning path covering Fabric fundamentals — lakehouses, warehouses, pipelines, notebooks, Power BI integration, and real-time analytics.',
+    prereqs: ['No prerequisites', 'Basic data concepts helpful'],
+    bizCase: 'Zero-cost foundational training that every team member should complete before any Fabric certification. Provides hands-on experience with the actual Fabric interface and workloads, reducing the learning curve for exam preparation and real-world projects.',
+    link:'https://learn.microsoft.com/en-us/training/paths/get-started-fabric/',
+    roles:{ architect:{step:1,priority:'core'}, engineer:{step:1,priority:'core'}, scientist:{step:1,priority:'core'}, analyst:{step:1,priority:'core'}, agentmaker:{step:1,priority:'optional'} }
   },
-  {
-    id: 'dp600-ilt',
-    name: 'DP-600T00: Fabric Analytics Engineer (Instructor-Led)',
-    code: 'Instructor-Led',
-    type: 'training',
-    cost: 2500,
-    level: 'Associate',
-    duration: '4 days',
-    description: 'Official Microsoft instructor-led course covering all DP-600 exam objectives. Includes hands-on labs, expert instruction, and exam prep. Price varies by training provider ($2,000–$3,000).',
-    link: 'https://learn.microsoft.com/en-us/training/courses/dp-600t00',
-    roles: {
-      architect: { step: 2, priority: 'optional' },
-      engineer: { step: 2, priority: 'optional' },
-      analyst: { step: 2, priority: 'optional' }
-    }
+  { id:'dp600-ilt', name:'DP-600T00: Fabric Analytics Engineer (Instructor-Led)', code:'Instructor-Led', type:'training', cost:2500, level:'Associate', duration:'4 days',
+    description:'Official Microsoft instructor-led course covering all DP-600 exam objectives. Includes hands-on labs, expert instruction, and exam prep. Price varies by training provider ($2,000-$3,000).',
+    prereqs: ['All DP-600 prerequisites apply', 'SQL, DAX, and Power BI experience required'],
+    bizCase: 'Accelerates certification preparation through structured, expert-led instruction with hands-on labs. Particularly valuable for team members who learn better in a classroom setting or need focused study time away from daily responsibilities. Typically increases first-attempt pass rates significantly.',
+    link:'https://learn.microsoft.com/en-us/training/courses/dp-600t00',
+    roles:{ architect:{step:2,priority:'optional'}, engineer:{step:2,priority:'optional'}, analyst:{step:2,priority:'optional'} }
   }
 ];
 
 const conferences = [
-  {
-    id: 'fabcon-2026',
-    name: 'FabCon 2026 + SQLCon',
-    date: 'March 16–20, 2026',
-    location: 'Georgia World Congress Center, Atlanta, GA',
-    cost: 3095,
-    costNote: '5-day pass ($2,515 for 4-day). Discount codes available (MSCATL, SQLCMTY200 for $200 off).',
-    description: 'The largest conference dedicated to Microsoft Fabric, co-located with SQLCon for the first time. 200+ sessions across every Fabric workload plus full-day workshops. Direct access to Microsoft product teams and MVPs.',
-    link: 'https://fabriccon.com/',
-    status: 'available',
-    relevantRoles: 'All roles'
+  { id:'fabcon-2026', name:'FabCon 2026 + SQLCon', date:'March 16-20, 2026', location:'Georgia World Congress Center, Atlanta, GA', cost:3095, costNote:'5-day pass ($2,515 for 4-day). Discount codes may be available.', description:'The largest conference dedicated to Microsoft Fabric, co-located with SQLCon. 200+ sessions across every Fabric workload plus full-day workshops. Direct access to Microsoft product teams and MVPs.', link:'https://fabriccon.com/', status:'available', relevantRoles:'All roles',
+    bizCase: 'The single most comprehensive Fabric learning event of the year. Attendees return with actionable implementation improvements, direct connections to Microsoft product teams for support, and early insight into the Fabric roadmap that informs strategic planning.'
   },
-  {
-    id: 'ms-build-2026',
-    name: 'Microsoft Build 2026',
-    date: 'May 15–17, 2026',
-    location: 'TBA (moved from Seattle)',
-    cost: 1500,
-    costNote: 'Estimated based on prior years. Final pricing TBA.',
-    description: 'Microsoft\'s flagship developer conference. Expect major AI and Fabric announcements, hands-on labs, and deep technical sessions on Azure, AI, and the broader Microsoft developer ecosystem.',
-    link: 'https://build.microsoft.com/',
-    status: 'available',
-    relevantRoles: 'Engineers, Architects, Data Scientists'
+  { id:'ms-build-2026', name:'Microsoft Build 2026', date:'May 2026 (Dates TBA)', location:'TBA', cost:1500, costNote:'Estimated based on prior years.', description:'Microsoft\'s flagship developer conference. Major AI and Fabric announcements, hands-on labs, and deep technical sessions on Azure, AI, and developer tools.', link:'https://build.microsoft.com/', status:'available', relevantRoles:'Engineers, Architects, Data Scientists, Agent Makers',
+    bizCase: 'The premier event for learning about new Microsoft AI capabilities before they reach general availability. Build attendees are typically 3-6 months ahead of the curve on new features and patterns.'
   },
-  {
-    id: 'data-summit-2026',
-    name: 'Data Summit 2026',
-    date: 'May 6–7, 2026',
-    location: 'Boston, MA',
-    cost: 1295,
-    costNote: 'Estimated. Check website for current pricing.',
-    description: 'Premier data management, analytics, and AI conference covering data governance, data quality, AI integration, and modern data architectures across platforms.',
-    link: 'https://www.dbta.com/datasummit/',
-    status: 'available',
-    relevantRoles: 'Architects, Engineers, Analysts'
+  { id:'fabcon-europe-2026', name:'FabCon Europe 2026', date:'September 28 - October 1, 2026', location:'Barcelona, Spain', cost:2500, costNote:'Estimated. Pricing TBA.', description:'European edition of the Microsoft Fabric + SQL Community Conference. Keynotes, tutorials, and deep-dive sessions led by global Microsoft experts and community leaders.', link:'https://www.sharepointeurope.com/european-microsoft-fabric-community-conference/', status:'available', relevantRoles:'All roles',
+    bizCase: 'Ideal for teams with European presence or those who cannot attend the Atlanta event. Same caliber of content with a smaller, more intimate networking environment.'
   },
-  {
-    id: 'databricks-summit-2026',
-    name: 'Databricks Data + AI Summit 2026',
-    date: 'June 15–18, 2026',
-    location: 'Moscone Center, San Francisco, CA',
-    cost: 2000,
-    costNote: 'Estimated. Early bird pricing usually available.',
-    description: 'World\'s leading conference for data engineering, analytics, and AI. 800+ sessions. While Databricks-focused, sessions on lakehouse architecture, ML engineering, and AI agents are broadly applicable to Fabric practitioners.',
-    link: 'https://www.databricks.com/dataaisummit',
-    status: 'available',
-    relevantRoles: 'Engineers, Data Scientists, Architects'
+  { id:'pass-east-2026', name:'PASS Data Community Summit East', date:'Spring 2026 (Dates TBA)', location:'Chicago, IL', cost:1500, costNote:'Estimated. Registration not yet open.', description:'Two-day focused event for East Coast data professionals. World-class training on SQL Server, Azure data services, and Fabric.', link:'https://passdatacommunitysummit.com/', status:'available', relevantRoles:'Engineers, Architects, Analysts',
+    bizCase: 'Efficient two-day format delivers high-value learning with minimal time away from work. Strong community focus means practical, real-world content from practitioners, not just vendor marketing.'
   },
-  {
-    id: 'fabcon-europe-2026',
-    name: 'FabCon Europe 2026',
-    date: 'September 28 – October 1, 2026',
-    location: 'Barcelona, Spain',
-    cost: 2500,
-    costNote: 'Estimated. Pricing TBA.',
-    description: 'European edition of the Microsoft Fabric + SQL Community Conference. Keynotes, tutorials, and deep-dive sessions led by global Microsoft experts and community leaders.',
-    link: 'https://www.sharepointeurope.com/european-microsoft-fabric-community-conference/',
-    status: 'available',
-    relevantRoles: 'All roles'
+  { id:'pass-west-2026', name:'PASS Data Community Summit West', date:'Fall 2026 (Dates TBA)', location:'Seattle, WA', cost:2200, costNote:'Estimated. Registration TBA.', description:'The most comprehensive PASS event with the broadest topic coverage and most networking opportunities.', link:'https://passdatacommunitysummit.com/', status:'available', relevantRoles:'All roles',
+    bizCase: 'The broadest data community event — covers SQL, Azure, Fabric, AI, and data governance across hundreds of sessions. The networking alone is worth the investment for building a support network of peers facing similar challenges.'
   },
-  {
-    id: 'pass-east-2026',
-    name: 'PASS Data Community Summit East',
-    date: 'Spring 2026 (Dates TBA)',
-    location: 'Chicago, IL',
-    cost: 1500,
-    costNote: 'Estimated. Registration not yet open.',
-    description: 'Two-day focused event for East Coast data professionals. World-class training on SQL Server, Azure data services, and Fabric in a streamlined format.',
-    link: 'https://passdatacommunitysummit.com/',
-    status: 'available',
-    relevantRoles: 'Engineers, Architects, Analysts'
+  { id:'databricks-summit-2026', name:'Databricks Data + AI Summit 2026', date:'June 2026 (Dates TBA)', location:'Moscone Center, San Francisco, CA', cost:2000, costNote:'Estimated. Early bird pricing usually available.', description:'World\'s leading conference for data engineering, analytics, and AI. While Databricks-focused, sessions on lakehouse architecture, ML engineering, and AI agents are broadly applicable.', link:'https://www.databricks.com/dataaisummit', status:'available', relevantRoles:'Engineers, Data Scientists, Architects',
+    bizCase: 'Provides valuable cross-platform perspective on lakehouse architecture and ML engineering patterns. Understanding what competitors and partners are building helps inform Fabric architecture decisions and avoids technology blind spots.'
   },
-  {
-    id: 'pass-west-2026',
-    name: 'PASS Data Community Summit West',
-    date: 'Fall 2026 (Dates TBA)',
-    location: 'Seattle, WA',
-    cost: 2200,
-    costNote: 'Estimated. Largest PASS event — registration TBA.',
-    description: 'The most comprehensive PASS event with the broadest topic coverage and most networking opportunities. Full sessions on Fabric, SQL, Azure data, and AI.',
-    link: 'https://passdatacommunitysummit.com/',
-    status: 'available',
-    relevantRoles: 'All roles'
+  { id:'gartner-da-2026', name:'Gartner Data & Analytics Summit 2026', date:'2026 (Dates TBA)', location:'Orlando, FL', cost:4375, costNote:'Estimated. Executive-level pricing.', description:'Strategic, executive-focused event covering data & analytics trends, vendor landscape, and organizational strategy.', link:'https://www.gartner.com/en/conferences/na/data-analytics-us', status:'available', relevantRoles:'Architects, Leadership',
+    bizCase: 'The most strategic event on this list — focused on organizational transformation, vendor evaluation, and data strategy rather than technical implementation. Best suited for architects and leaders making multi-year platform and investment decisions.'
   },
-  {
-    id: 'gartner-da-2026',
-    name: 'Gartner Data & Analytics Summit 2026',
-    date: '2026 (Dates TBA)',
-    location: 'Gaylord Palms, Kissimmee, FL',
-    cost: 4375,
-    costNote: 'Estimated based on prior years. Executive-level pricing.',
-    description: 'Strategic, executive-focused event covering data & analytics trends, vendor landscape, and organizational strategy. Best suited for leadership and architects making platform and investment decisions.',
-    link: 'https://www.gartner.com/en/conferences/na/data-analytics-us',
-    status: 'available',
-    relevantRoles: 'Architects, Leadership'
-  },
-  {
-    id: 'ms-ignite-2026',
-    name: 'Microsoft Ignite 2026',
-    date: 'November 17–20, 2026',
-    location: 'Moscone Center, San Francisco, CA',
-    cost: 1800,
-    costNote: 'Estimated. Pricing TBA.',
-    description: 'Microsoft\'s premier IT professional and developer conference. Major product announcements, deep technical sessions, and certification exam opportunities. Expect significant Fabric and AI coverage.',
-    link: 'https://ignite.microsoft.com/',
-    status: 'available',
-    relevantRoles: 'All roles'
+  { id:'ms-ignite-2026', name:'Microsoft Ignite 2026', date:'November 17-20, 2026', location:'Moscone Center, San Francisco, CA', cost:1800, costNote:'Estimated. Pricing TBA.', description:'Microsoft\'s premier IT professional and developer conference. Major product announcements, deep technical sessions, and certification exam opportunities.', link:'https://ignite.microsoft.com/', status:'available', relevantRoles:'All roles',
+    bizCase: 'Microsoft\'s broadest technical conference — covers the full stack from infrastructure to AI. Attendees get early access to product roadmaps, hands-on labs with pre-release features, and discounted/free certification exam opportunities.'
   }
 ];
 
@@ -1000,80 +540,75 @@ const conferences = [
 let selectedItems = new Set();
 
 // === RENDERING ===
-function createCard(item, isConference = false) {
+function createCard(item, isConference) {
   if (isConference) {
-    const statusBadge = item.status === 'sold-out'
-      ? '<span class="badge badge-sold-out">SOLD OUT</span>'
-      : '';
-    return `
-      <div class="conf-card ${selectedItems.has(item.id) ? 'selected' : ''}" onclick="toggleSelection('${item.id}', true)" data-id="${item.id}">
-        <div class="conf-header">
-          <h3>${item.name}</h3>
-          <div class="conf-date">${item.date}</div>
-          <div class="conf-location">${item.location}</div>
-        </div>
-        <div class="conf-body">
-          <div class="card-meta">
-            <span class="badge badge-cost">~$${item.cost.toLocaleString()}</span>
-            ${statusBadge}
-          </div>
-          <div class="description">${item.description}</div>
-          <div class="conf-details">
-            <div><strong>Cost note:</strong> ${item.costNote}</div>
-            <div><strong>Best for:</strong> ${item.relevantRoles}</div>
-          </div>
-          <div style="margin-top:0.8rem;"><a href="${item.link}" target="_blank" rel="noopener">Visit website &rarr;</a></div>
-        </div>
-      </div>
-    `;
-  }
-
-  const typeClass = item.type;
-  const typeLabel = item.type === 'applied-skill' ? 'Applied Skill' :
-                    item.type === 'fundamental' ? 'Fundamental' :
-                    item.type === 'training' ? 'Training' : 'Certification';
-
-  return `
-    <div class="card ${selectedItems.has(item.id) ? 'selected' : ''}" onclick="toggleSelection('${item.id}')" data-id="${item.id}">
-      <div class="card-type ${typeClass}">${typeLabel}</div>
-      <div class="card-body">
-        <h3>${item.name}</h3>
-        <div class="exam-code">${item.code}</div>
-        <div class="card-meta">
-          ${item.cost > 0 ? `<span class="badge badge-cost">$${item.cost.toLocaleString()}</span>` : '<span class="badge badge-free">Free</span>'}
-          <span class="badge badge-level">${item.level}</span>
-          <span class="badge badge-duration">${item.duration}</span>
-        </div>
+    const statusBadge = item.status === 'sold-out' ? '<span class="badge badge-sold-out">SOLD OUT</span>' : '';
+    return `<div class="conf-card ${selectedItems.has(item.id)?'selected':''}" onclick="toggleSelection('${item.id}',true)" data-id="${item.id}">
+      <div class="conf-header"><h3>${item.name}</h3><div class="conf-date">${item.date}</div><div class="conf-location">${item.location}</div></div>
+      <div class="conf-body">
+        <div class="card-meta"><span class="badge badge-cost">~$${item.cost.toLocaleString()}</span>${statusBadge}</div>
         <div class="description">${item.description}</div>
+        <div class="conf-details"><div><strong>Cost note:</strong> ${item.costNote}</div><div><strong>Best for:</strong> ${item.relevantRoles}</div></div>
+        <div style="margin-top:0.8rem;"><a href="${item.link}" target="_blank" rel="noopener">Visit website &rarr;</a></div>
+      </div></div>`;
+  }
+  const typeClass = item.type;
+  const typeLabel = item.type==='applied-skill'?'Applied Skill':item.type==='fundamental'?'Fundamental':item.type==='training'?'Training':item.type==='external'?'Baseline Skill':'Certification';
+  const prereqHtml = (item.prereqs && item.prereqs.length) ? `<div class="prereqs"><strong>Prerequisites &amp; Recommended Knowledge</strong><ul>${item.prereqs.map(p=>`<li>${p}</li>`).join('')}</ul></div>` : '';
+  return `<div class="card ${selectedItems.has(item.id)?'selected':''}" onclick="toggleSelection('${item.id}')" data-id="${item.id}">
+    <div class="card-type ${typeClass}">${typeLabel}</div>
+    <div class="card-body">
+      <h3>${item.name}</h3>
+      <div class="exam-code">${item.code}</div>
+      <div class="card-meta">
+        ${item.cost>0?`<span class="badge badge-cost">$${item.cost.toLocaleString()}</span>`:'<span class="badge badge-free">Free</span>'}
+        <span class="badge badge-level">${item.level}</span>
+        <span class="badge badge-duration">${item.duration}</span>
       </div>
-      <div class="card-footer">
-        <a href="${item.link}" target="_blank" rel="noopener">Learn more &rarr;</a>
-      </div>
+      <div class="description">${item.description}</div>
+      ${prereqHtml}
     </div>
-  `;
+    <div class="card-footer"><a href="${item.link}" target="_blank" rel="noopener">Learn more &rarr;</a></div></div>`;
 }
 
 function renderRolePage(role) {
-  for (let step = 1; step <= 4; step++) {
+  for (let step=1; step<=4; step++) {
     const container = document.getElementById(`${role}-step${step}`);
     if (!container) continue;
     const items = certifications.filter(c => c.roles[role] && c.roles[role].step === step);
-    items.sort((a, b) => {
-      const pOrder = { core: 0, optional: 1 };
-      return (pOrder[a.roles[role].priority] || 1) - (pOrder[b.roles[role].priority] || 1);
+    items.sort((a,b) => {
+      const p = {core:0, optional:1};
+      return (p[a.roles[role].priority]||1) - (p[b.roles[role].priority]||1);
     });
-    container.innerHTML = items.map(item => createCard(item)).join('');
+    container.innerHTML = items.map(i => createCard(i)).join('');
   }
 }
 
 function renderConferences() {
-  const grid = document.getElementById('conferences-grid');
-  grid.innerHTML = conferences.map(c => createCard(c, true)).join('');
+  document.getElementById('conferences-grid').innerHTML = conferences.map(c => createCard(c, true)).join('');
+}
+
+function renderOverviewTable() {
+  const roles = ['architect','engineer','scientist','analyst','agentmaker'];
+  const certs = certifications.filter(c => c.type !== 'external');
+  let html = '';
+  certs.forEach(c => {
+    html += `<tr><td style="padding:0.6rem 1rem;border-bottom:1px solid #eee;">${c.name}</td>`;
+    html += `<td style="padding:0.6rem;border-bottom:1px solid #eee;">${c.level}</td>`;
+    html += `<td style="padding:0.6rem;border-bottom:1px solid #eee;">${c.cost>0?'$'+c.cost:'Free'}</td>`;
+    roles.forEach(r => {
+      const marker = c.roles[r] ? (c.roles[r].priority==='core'?'&#9679;':'&#9675;') : '';
+      html += `<td style="padding:0.6rem;text-align:center;border-bottom:1px solid #eee;">${marker}</td>`;
+    });
+    html += '</tr>';
+  });
+  document.getElementById('overviewTable').innerHTML = html;
 }
 
 function renderAll() {
-  ['architect', 'engineer', 'scientist', 'analyst'].forEach(renderRolePage);
+  ['architect','engineer','scientist','analyst','agentmaker'].forEach(renderRolePage);
   renderConferences();
+  renderOverviewTable();
 }
 
 // === NAVIGATION ===
@@ -1085,14 +620,9 @@ function showPage(role) {
 }
 
 // === SELECTION ===
-function toggleSelection(id, isConf = false) {
-  if (selectedItems.has(id)) {
-    selectedItems.delete(id);
-  } else {
-    selectedItems.add(id);
-  }
+function toggleSelection(id) {
+  if (selectedItems.has(id)) selectedItems.delete(id); else selectedItems.add(id);
   updateSelectionUI();
-  // Re-render to update card states
   renderAll();
 }
 
@@ -1100,111 +630,105 @@ function updateSelectionUI() {
   const count = selectedItems.size;
   let total = 0;
   selectedItems.forEach(id => {
-    const cert = certifications.find(c => c.id === id);
-    const conf = conferences.find(c => c.id === id);
-    if (cert) total += cert.cost;
-    if (conf) total += conf.cost;
+    const c = certifications.find(x=>x.id===id);
+    const f = conferences.find(x=>x.id===id);
+    if (c) total += c.cost;
+    if (f) total += f.cost;
   });
-
-  document.getElementById('selectionCount').textContent = `${count} item${count !== 1 ? 's' : ''} selected`;
+  document.getElementById('selectionCount').textContent = `${count} item${count!==1?'s':''} selected`;
   document.getElementById('totalCost').textContent = `$${total.toLocaleString()}`;
   document.getElementById('exportBtn').disabled = count === 0;
 }
 
-function clearSelections() {
-  selectedItems.clear();
-  updateSelectionUI();
-  renderAll();
-}
+function clearSelections() { selectedItems.clear(); updateSelectionUI(); renderAll(); }
 
-// === EXPORT ===
+// === EXPORT (BUSINESS CASE) ===
 function openExportModal() {
-  const modal = document.getElementById('exportModal');
   const content = document.getElementById('exportContent');
-
-  const selectedCerts = certifications.filter(c => selectedItems.has(c.id));
-  const selectedConfs = conferences.filter(c => selectedItems.has(c.id));
-
+  const selCerts = certifications.filter(c => selectedItems.has(c.id));
+  const selConfs = conferences.filter(c => selectedItems.has(c.id));
   let html = '';
 
-  if (selectedCerts.length > 0) {
-    html += '<h3 style="margin-bottom:0.5rem;">Certifications &amp; Credentials</h3>';
-    html += '<table><thead><tr><th>Credential</th><th>Code</th><th>Type</th><th style="text-align:right;">Cost</th></tr></thead><tbody>';
+  // Executive Summary
+  let grandTotal = 0;
+  selectedItems.forEach(id => { const c=certifications.find(x=>x.id===id); const f=conferences.find(x=>x.id===id); if(c) grandTotal+=c.cost; if(f) grandTotal+=f.cost; });
+  const examCount = selCerts.filter(c=>c.type==='certification'||c.type==='fundamental').length;
+  const freeCount = selCerts.filter(c=>c.cost===0).length;
+
+  html += `<div class="export-section"><h3>Executive Summary</h3>
+    <div class="export-biz-case"><strong>Investment Overview:</strong> This learning plan includes ${selCerts.length} certifications/credentials and ${selConfs.length} conference${selConfs.length!==1?'s':''} for a total estimated investment of <strong>$${grandTotal.toLocaleString()}</strong>.
+    ${examCount>0?` Of the ${selCerts.length} items, ${freeCount} are free (Applied Skills and training resources), reducing the per-person exam cost to focus investment on the highest-value credentials.`:''}
+    Certified team members consistently demonstrate faster onboarding to new platforms, higher first-time-right rates on implementations, and improved cross-team communication through shared technical vocabulary.</div></div>`;
+
+  // Certifications with business cases
+  if (selCerts.length > 0) {
+    html += `<div class="export-section"><h3>Certifications &amp; Credentials</h3>
+      <table><thead><tr><th>Credential</th><th>Code</th><th>Level</th><th style="text-align:right;">Cost</th></tr></thead><tbody>`;
     let certTotal = 0;
-    selectedCerts.forEach(c => {
+    selCerts.forEach(c => {
       certTotal += c.cost;
-      html += `<tr><td>${c.name}</td><td>${c.code}</td><td>${c.level}</td><td style="text-align:right;">${c.cost > 0 ? '$' + c.cost.toLocaleString() : 'Free'}</td></tr>`;
+      html += `<tr><td>${c.name}</td><td>${c.code}</td><td>${c.level}</td><td style="text-align:right;">${c.cost>0?'$'+c.cost:'Free'}</td></tr>`;
+      if (c.bizCase) {
+        html += `<tr><td colspan="4"><div class="export-biz-case"><strong>Business Value:</strong> ${c.bizCase}</div></td></tr>`;
+      }
     });
-    html += `<tr class="total-row"><td colspan="3">Subtotal</td><td style="text-align:right;">$${certTotal.toLocaleString()}</td></tr>`;
-    html += '</tbody></table>';
+    html += `<tr class="total-row"><td colspan="3">Subtotal</td><td style="text-align:right;">$${certTotal.toLocaleString()}</td></tr></tbody></table></div>`;
   }
 
-  if (selectedConfs.length > 0) {
-    html += '<h3 style="margin-bottom:0.5rem;">Conferences &amp; Events</h3>';
-    html += '<table><thead><tr><th>Event</th><th>Date</th><th>Location</th><th style="text-align:right;">Est. Cost</th></tr></thead><tbody>';
+  // Conferences with business cases
+  if (selConfs.length > 0) {
+    html += `<div class="export-section"><h3>Conferences &amp; Events</h3>
+      <table><thead><tr><th>Event</th><th>Date</th><th>Location</th><th style="text-align:right;">Est. Cost</th></tr></thead><tbody>`;
     let confTotal = 0;
-    selectedConfs.forEach(c => {
+    selConfs.forEach(c => {
       confTotal += c.cost;
       html += `<tr><td>${c.name}</td><td>${c.date}</td><td>${c.location}</td><td style="text-align:right;">~$${c.cost.toLocaleString()}</td></tr>`;
+      if (c.bizCase) {
+        html += `<tr><td colspan="4"><div class="export-biz-case"><strong>Business Value:</strong> ${c.bizCase}</div></td></tr>`;
+      }
     });
-    html += `<tr class="total-row"><td colspan="3">Subtotal</td><td style="text-align:right;">~$${confTotal.toLocaleString()}</td></tr>`;
-    html += '</tbody></table>';
+    html += `<tr class="total-row"><td colspan="3">Subtotal</td><td style="text-align:right;">~$${confTotal.toLocaleString()}</td></tr></tbody></table></div>`;
   }
 
-  let grandTotal = 0;
-  selectedItems.forEach(id => {
-    const cert = certifications.find(c => c.id === id);
-    const conf = conferences.find(c => c.id === id);
-    if (cert) grandTotal += cert.cost;
-    if (conf) grandTotal += conf.cost;
-  });
-
-  html += `<div style="background:#f8f9fa;padding:1rem;border-radius:8px;text-align:right;font-size:1.1rem;"><strong>Grand Total: ~$${grandTotal.toLocaleString()}</strong></div>`;
+  html += `<div style="background:#f8f9fa;padding:1rem;border-radius:8px;text-align:right;font-size:1.1rem;margin-top:1rem;"><strong>Total Estimated Investment: ~$${grandTotal.toLocaleString()}</strong></div>`;
 
   content.innerHTML = html;
-  modal.classList.add('visible');
+  document.getElementById('exportModal').classList.add('visible');
 }
 
-function closeExportModal() {
-  document.getElementById('exportModal').classList.remove('visible');
-}
+function closeExportModal() { document.getElementById('exportModal').classList.remove('visible'); }
 
 function copyToClipboard() {
-  const selectedCerts = certifications.filter(c => selectedItems.has(c.id));
-  const selectedConfs = conferences.filter(c => selectedItems.has(c.id));
-
-  let text = 'MICROSOFT FABRIC LEARNING PLAN\n';
-  text += '================================\n\n';
-
-  if (selectedCerts.length > 0) {
-    text += 'CERTIFICATIONS & CREDENTIALS\n';
-    text += '----------------------------\n';
-    selectedCerts.forEach(c => {
-      text += `- ${c.name} (${c.code}) — ${c.cost > 0 ? '$' + c.cost : 'Free'}\n`;
-    });
-    text += '\n';
-  }
-
-  if (selectedConfs.length > 0) {
-    text += 'CONFERENCES & EVENTS\n';
-    text += '--------------------\n';
-    selectedConfs.forEach(c => {
-      text += `- ${c.name} — ${c.date} — ${c.location} — ~$${c.cost.toLocaleString()}\n`;
-    });
-    text += '\n';
-  }
+  const selCerts = certifications.filter(c => selectedItems.has(c.id));
+  const selConfs = conferences.filter(c => selectedItems.has(c.id));
+  let text = 'MICROSOFT FABRIC LEARNING INVESTMENT PLAN\n';
+  text += '==========================================\nPrepared by WARLab\n\n';
 
   let total = 0;
-  selectedItems.forEach(id => {
-    const cert = certifications.find(c => c.id === id);
-    const conf = conferences.find(c => c.id === id);
-    if (cert) total += cert.cost;
-    if (conf) total += conf.cost;
-  });
-  text += `ESTIMATED TOTAL: ~$${total.toLocaleString()}\n`;
+  selectedItems.forEach(id => { const c=certifications.find(x=>x.id===id); const f=conferences.find(x=>x.id===id); if(c) total+=c.cost; if(f) total+=f.cost; });
+
+  text += `EXECUTIVE SUMMARY\nTotal items: ${selCerts.length} certifications/credentials + ${selConfs.length} events\nEstimated investment: $${total.toLocaleString()}\n\n`;
+
+  if (selCerts.length) {
+    text += 'CERTIFICATIONS & CREDENTIALS\n----------------------------\n';
+    selCerts.forEach(c => {
+      text += `\n${c.name} (${c.code}) - ${c.cost>0?'$'+c.cost:'Free'}\n`;
+      if (c.bizCase) text += `  Business Value: ${c.bizCase}\n`;
+    });
+    text += '\n';
+  }
+  if (selConfs.length) {
+    text += 'CONFERENCES & EVENTS\n--------------------\n';
+    selConfs.forEach(c => {
+      text += `\n${c.name} - ${c.date} - ${c.location} - ~$${c.cost.toLocaleString()}\n`;
+      if (c.bizCase) text += `  Business Value: ${c.bizCase}\n`;
+    });
+    text += '\n';
+  }
+  text += `TOTAL ESTIMATED INVESTMENT: ~$${total.toLocaleString()}\n`;
 
   navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('.modal-actions .btn-primary');
+    const btn = event.target;
     const orig = btn.textContent;
     btn.textContent = 'Copied!';
     setTimeout(() => btn.textContent = orig, 2000);
@@ -1212,23 +736,15 @@ function copyToClipboard() {
 }
 
 function downloadCSV() {
-  const selectedCerts = certifications.filter(c => selectedItems.has(c.id));
-  const selectedConfs = conferences.filter(c => selectedItems.has(c.id));
-
-  let csv = 'Type,Name,Code/Date,Level/Location,Cost\n';
-  selectedCerts.forEach(c => {
-    csv += `"Certification","${c.name}","${c.code}","${c.level}","${c.cost > 0 ? '$' + c.cost : 'Free'}"\n`;
-  });
-  selectedConfs.forEach(c => {
-    csv += `"Conference","${c.name}","${c.date}","${c.location}","~$${c.cost}"\n`;
-  });
-
-  const blob = new Blob([csv], { type: 'text/csv' });
+  const selCerts = certifications.filter(c => selectedItems.has(c.id));
+  const selConfs = conferences.filter(c => selectedItems.has(c.id));
+  let csv = 'Type,Name,Code,Level,Cost,Business Value\n';
+  selCerts.forEach(c => { csv += `"Certification","${c.name}","${c.code}","${c.level}","${c.cost>0?'$'+c.cost:'Free'}","${(c.bizCase||'').replace(/"/g,'""')}"\n`; });
+  selConfs.forEach(c => { csv += `"Conference","${c.name}","${c.date}","${c.location}","~$${c.cost}","${(c.bizCase||'').replace(/"/g,'""')}"\n`; });
+  const blob = new Blob([csv], {type:'text/csv'});
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url;
-  a.download = 'fabric-learning-plan.csv';
-  a.click();
+  a.href = url; a.download = 'fabric-learning-plan.csv'; a.click();
   URL.revokeObjectURL(url);
 }
 
