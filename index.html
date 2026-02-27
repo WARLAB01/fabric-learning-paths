@@ -16,6 +16,7 @@
     --purple: #9b59b6;
     --teal: #1abc9c;
     --orange: #e67e22;
+    --indigo: #5c6bc0;
     --light: #f5f6fa;
     --card-bg: #ffffff;
     --text: #2c3e50;
@@ -41,6 +42,7 @@
   .nav-btn.active[data-role="scientist"] { background: var(--teal); border-color: var(--teal); }
   .nav-btn.active[data-role="analyst"] { background: var(--green); border-color: var(--green); }
   .nav-btn.active[data-role="agentmaker"] { background: var(--orange); border-color: var(--orange); }
+  .nav-btn.active[data-role="governance"] { background: var(--indigo); border-color: var(--indigo); }
   .nav-btn.active[data-role="conferences"] { background: var(--highlight); border-color: var(--highlight); }
 
   .selection-bar { background: var(--secondary); color: white; padding: 0.7rem 2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; position: sticky; top: 0; z-index: 98; }
@@ -159,6 +161,7 @@
   <button class="nav-btn" data-role="scientist" onclick="showPage('scientist')">Data Scientist</button>
   <button class="nav-btn" data-role="analyst" onclick="showPage('analyst')">Analyst</button>
   <button class="nav-btn" data-role="agentmaker" onclick="showPage('agentmaker')">Agent Maker</button>
+  <button class="nav-btn" data-role="governance" onclick="showPage('governance')">Data Governance</button>
   <button class="nav-btn" data-role="conferences" onclick="showPage('conferences')">Conferences &amp; Events</button>
 </nav>
 
@@ -196,6 +199,7 @@
             <th style="padding:0.8rem;text-align:center;">Scientist</th>
             <th style="padding:0.8rem;text-align:center;">Analyst</th>
             <th style="padding:0.8rem;text-align:center;">Agent Maker</th>
+            <th style="padding:0.8rem;text-align:center;">Governance</th>
           </tr>
         </thead>
         <tbody id="overviewTable"></tbody>
@@ -281,6 +285,22 @@
     <div class="sequence-section"><div class="sequence-label"><span class="step-num">4</span> Applied Skills &amp; Advanced Agent Patterns</div><div class="card-grid" id="agentmaker-step4"></div></div>
   </div>
 
+  <!-- DATA GOVERNANCE PAGE -->
+  <div class="page" id="page-governance">
+    <div class="role-header">
+      <h2 style="color:var(--indigo);">Data Governance</h2>
+      <p style="margin-top:0.5rem;color:var(--text-light);">Establishes and enforces data policies, classification, lineage, compliance controls, and access governance across the Fabric estate using Microsoft Purview and native Fabric governance features.</p>
+      <div class="business-case"><strong>Why invest in Data Governance skills?</strong> As your Fabric deployment scales, ungoverned data becomes a liability &mdash; regulatory fines, data breaches, and trust erosion are real risks. Microsoft Purview is deeply integrated with Fabric, providing sensitivity labels that travel with data, data loss prevention (DLP) policies on lakehouses and warehouses, automated data cataloging through the Unified Catalog, and lineage tracking from source through to Power BI report. The governance role ensures your team has someone who can configure these controls, establish data domains and endorsement standards, manage compliance for Copilot interactions, and maintain the organizational data map. Without governance expertise, Fabric adoption outpaces policy &mdash; creating shadow data sprawl, inconsistent definitions, and compliance gaps that are expensive to remediate later.</div>
+    </div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">1</span> Foundation</div><div class="card-grid" id="governance-step1"></div></div>
+    <div class="sequence-arrow">&#8595;</div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">2</span> Core Governance &amp; Compliance Certifications</div><div class="card-grid" id="governance-step2"></div></div>
+    <div class="sequence-arrow">&#8595;</div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">3</span> Fabric Platform Knowledge</div><div class="card-grid" id="governance-step3"></div></div>
+    <div class="sequence-arrow">&#8595;</div>
+    <div class="sequence-section"><div class="sequence-label"><span class="step-num">4</span> Applied Skills &amp; Specialization</div><div class="card-grid" id="governance-step4"></div></div>
+  </div>
+
   <!-- CONFERENCES PAGE -->
   <div class="page" id="page-conferences">
     <div class="role-header">
@@ -315,7 +335,7 @@ const certifications = [
     prereqs: ['No formal prerequisites', 'Basic familiarity with data concepts (tables, queries, cloud storage) is helpful'],
     bizCase: 'Establishes a shared vocabulary across the team for Azure data services. Ensures everyone understands the foundational building blocks (relational vs. non-relational, batch vs. streaming) before specializing. Reduces miscommunication in architecture discussions and accelerates onboarding to Fabric-specific training.',
     link:'https://learn.microsoft.com/en-us/credentials/certifications/azure-data-fundamentals/',
-    roles:{ architect:{step:1,priority:'core'}, engineer:{step:1,priority:'core'}, scientist:{step:1,priority:'core'}, analyst:{step:1,priority:'core'}, agentmaker:{step:1,priority:'optional'} }
+    roles:{ architect:{step:1,priority:'core'}, engineer:{step:1,priority:'core'}, scientist:{step:1,priority:'core'}, analyst:{step:1,priority:'core'}, agentmaker:{step:1,priority:'optional'}, governance:{step:1,priority:'core'} }
   },
   { id:'ai900', name:'Azure AI Fundamentals', code:'AI-900', type:'fundamental', cost:99, level:'Fundamental', duration:'45 min exam',
     description:'Foundational knowledge of machine learning and AI concepts, plus Azure AI services. Recommended before pursuing any AI-focused certifications.',
@@ -330,6 +350,41 @@ const certifications = [
     bizCase: 'Essential foundation for anyone entering the Copilot Studio / low-code agent path. Demonstrates understanding of the Power Platform ecosystem that underpins Copilot Studio agent development. Also valuable for analysts who want to extend their dashboards with Power Apps or Power Automate flows.',
     link:'https://learn.microsoft.com/en-us/credentials/certifications/power-platform-fundamentals/',
     roles:{ agentmaker:{step:1,priority:'core'}, analyst:{step:3,priority:'optional'} }
+  },
+  { id:'sc900', name:'Security, Compliance & Identity Fundamentals', code:'SC-900', type:'fundamental', cost:99, level:'Fundamental', duration:'45 min exam',
+    description:'Foundational knowledge of security, compliance, and identity concepts across Microsoft services. Covers Microsoft Entra, Microsoft Purview compliance portal, and Microsoft Defender. The entry point for governance and compliance certification paths.',
+    prereqs: ['No formal prerequisites', 'Basic understanding of cloud computing concepts helpful', 'Familiarity with Microsoft 365 administration beneficial'],
+    bizCase: 'Establishes the security and compliance vocabulary that data governance professionals need before specializing. Ensures team members understand Microsoft\'s identity, protection, and compliance stack at a conceptual level before configuring Purview policies and sensitivity labels in Fabric.',
+    link:'https://learn.microsoft.com/en-us/credentials/certifications/security-compliance-and-identity-fundamentals/',
+    roles:{ governance:{step:1,priority:'core'}, architect:{step:1,priority:'optional'} }
+  },
+  { id:'sc400', name:'Information Protection & Compliance Administrator', code:'SC-400', type:'certification', cost:165, level:'Associate', duration:'180 min exam',
+    description:'Validates ability to plan and implement information protection, data loss prevention (DLP), data lifecycle management, and compliance controls in Microsoft 365 and Azure. The core certification for Purview governance — directly applicable to protecting Fabric data.',
+    prereqs: ['SC-900 or equivalent security/compliance foundational knowledge', 'Experience with Microsoft 365 administration', 'Understanding of sensitivity labels, DLP policies, and retention policies', 'Familiarity with Microsoft Purview compliance portal'],
+    bizCase: 'The most directly relevant certification for governing Fabric data. SC-400 holders can configure the sensitivity labels that protect Fabric lakehouses and warehouses, implement DLP policies that prevent data oversharing, manage data retention for compliance, and set up information barriers. This is the certification that ensures your Fabric data stays classified, protected, and compliant.',
+    link:'https://learn.microsoft.com/en-us/credentials/certifications/information-protection-and-compliance-administrator/',
+    roles:{ governance:{step:2,priority:'core'}, architect:{step:3,priority:'optional'} }
+  },
+  { id:'purview-fabric-learn', name:'Microsoft Learn: Govern Data in Fabric with Purview (Free)', code:'Self-Paced', type:'training', cost:0, level:'Intermediate', duration:'~4 hours',
+    description:'Free module covering how Microsoft Purview enables comprehensive data governance for Fabric — sensitivity labels on Fabric items, DLP on OneLake, the Purview hub in Fabric, data cataloging, lineage tracking, and domain management.',
+    prereqs: ['Basic Fabric knowledge (complete Get Started with Fabric first)', 'Understanding of data governance concepts'],
+    bizCase: 'Zero-cost, Fabric-specific governance training that bridges the gap between general Purview knowledge (SC-400) and practical Fabric governance implementation. Covers the exact integration points your governance team will manage daily.',
+    link:'https://learn.microsoft.com/en-us/training/modules/fabric-data-governance-purview/',
+    roles:{ governance:{step:3,priority:'core'}, architect:{step:3,priority:'optional'} }
+  },
+  { id:'purview-learn-path', name:'Microsoft Learn: Microsoft Purview Governance (Free)', code:'Self-Paced', type:'training', cost:0, level:'Intermediate', duration:'~10 hours',
+    description:'Comprehensive free learning path covering the full Microsoft Purview governance suite — Unified Catalog, data map, data estate insights, glossary management, data quality, and integration with Azure and Microsoft 365 data sources.',
+    prereqs: ['Basic Azure portal familiarity', 'Understanding of metadata management and data cataloging concepts'],
+    bizCase: 'Provides deep knowledge of the Purview platform that underlies Fabric governance. Team members who complete this path can configure the organizational data map, manage business glossaries for consistent data definitions, and use data quality rules to catch issues before they reach downstream reports.',
+    link:'https://learn.microsoft.com/en-us/training/purview/',
+    roles:{ governance:{step:2,priority:'core'} }
+  },
+  { id:'as-purview-catalog', name:'Govern Data Across Your Organization with Microsoft Purview', code:'Applied Skill', type:'applied-skill', cost:0, level:'Applied Skill', duration:'Lab-based assessment',
+    description:'Hands-on validation of your ability to use Microsoft Purview to catalog, classify, and govern data assets across your organization. Covers data map configuration, glossary terms, classification rules, and access policies.',
+    prereqs: ['Microsoft Purview experience', 'Understanding of data cataloging and classification concepts', 'Azure portal familiarity'],
+    bizCase: 'Proves practical ability to configure the governance controls that keep your data estate discoverable, classified, and policy-compliant. This credential directly maps to the day-to-day work of managing Fabric governance — ensuring every lakehouse, warehouse, and dataset is cataloged and properly labeled.',
+    link:'https://learn.microsoft.com/en-us/credentials/applied-skills/govern-data-across-your-organization/',
+    roles:{ governance:{step:4,priority:'core'}, architect:{step:4,priority:'optional'} }
   },
   // EXTERNAL / NON-MS BASELINE
   { id:'ext-sql', name:'SQL Fundamentals (Non-MS)', code:'External', type:'external', cost:0, level:'Baseline Skill', duration:'20-40 hours',
@@ -366,7 +421,7 @@ const certifications = [
     prereqs: ['SQL proficiency (SELECT, JOINs, aggregations)', 'DAX experience (CALCULATE, filter context, time intelligence)', 'Power BI experience equivalent to PL-300 level', 'Familiarity with data modeling (star schema, relationships)', '2+ years working with analytics solutions recommended'],
     bizCase: 'The broadest Fabric certification — validates end-to-end analytics capability from data ingestion through semantic modeling to report delivery. Certified team members can design governed, high-performance analytics solutions that scale across the organization. Directly translates to faster dashboard delivery, better data quality, and reduced reliance on IT for analytics changes.',
     link:'https://learn.microsoft.com/en-us/credentials/certifications/fabric-analytics-engineer-associate/',
-    roles:{ architect:{step:2,priority:'core'}, engineer:{step:2,priority:'core'}, scientist:{step:3,priority:'optional'}, analyst:{step:2,priority:'core'} }
+    roles:{ architect:{step:2,priority:'core'}, engineer:{step:2,priority:'core'}, scientist:{step:3,priority:'optional'}, analyst:{step:2,priority:'core'}, governance:{step:3,priority:'optional'} }
   },
   { id:'dp700', name:'Fabric Data Engineer Associate', code:'DP-700', type:'certification', cost:165, level:'Associate', duration:'100 min exam',
     description:'Specialized data engineering within Fabric — data ingestion, transformation, lakehouse/warehouse architecture, pipelines, and orchestration.',
@@ -490,7 +545,7 @@ const certifications = [
     prereqs: ['Azure security fundamentals', 'Understanding of AI/ML deployment patterns', 'Familiarity with Azure RBAC and networking'],
     bizCase: 'As AI agents gain access to sensitive enterprise data and take autonomous actions, security becomes paramount. This credential ensures team members can implement proper guardrails, data protection, and compliance controls around AI workloads.',
     link:'https://learn.microsoft.com/en-us/credentials/applied-skills/secure-ai-solutions-in-the-cloud/',
-    roles:{ architect:{step:4,priority:'core'}, engineer:{step:4,priority:'optional'}, agentmaker:{step:4,priority:'optional'} }
+    roles:{ architect:{step:4,priority:'core'}, engineer:{step:4,priority:'optional'}, agentmaker:{step:4,priority:'optional'}, governance:{step:4,priority:'core'} }
   },
   // TRAINING
   { id:'ms-learn-fabric', name:'Microsoft Learn: Get Started with Fabric (Free)', code:'Self-Paced', type:'training', cost:0, level:'Beginner', duration:'~8 hours',
@@ -498,7 +553,7 @@ const certifications = [
     prereqs: ['No prerequisites', 'Basic data concepts helpful'],
     bizCase: 'Zero-cost foundational training that every team member should complete before any Fabric certification. Provides hands-on experience with the actual Fabric interface and workloads, reducing the learning curve for exam preparation and real-world projects.',
     link:'https://learn.microsoft.com/en-us/training/paths/get-started-fabric/',
-    roles:{ architect:{step:1,priority:'core'}, engineer:{step:1,priority:'core'}, scientist:{step:1,priority:'core'}, analyst:{step:1,priority:'core'}, agentmaker:{step:1,priority:'optional'} }
+    roles:{ architect:{step:1,priority:'core'}, engineer:{step:1,priority:'core'}, scientist:{step:1,priority:'core'}, analyst:{step:1,priority:'core'}, agentmaker:{step:1,priority:'optional'}, governance:{step:1,priority:'core'} }
   },
   { id:'dp600-ilt', name:'DP-600T00: Fabric Analytics Engineer (Instructor-Led)', code:'Instructor-Led', type:'training', cost:2500, level:'Associate', duration:'4 days',
     description:'Official Microsoft instructor-led course covering all DP-600 exam objectives. Includes hands-on labs, expert instruction, and exam prep. Price varies by training provider ($2,000-$3,000).',
@@ -589,7 +644,7 @@ function renderConferences() {
 }
 
 function renderOverviewTable() {
-  const roles = ['architect','engineer','scientist','analyst','agentmaker'];
+  const roles = ['architect','engineer','scientist','analyst','agentmaker','governance'];
   const certs = certifications.filter(c => c.type !== 'external');
   let html = '';
   certs.forEach(c => {
@@ -606,7 +661,7 @@ function renderOverviewTable() {
 }
 
 function renderAll() {
-  ['architect','engineer','scientist','analyst','agentmaker'].forEach(renderRolePage);
+  ['architect','engineer','scientist','analyst','agentmaker','governance'].forEach(renderRolePage);
   renderConferences();
   renderOverviewTable();
 }
